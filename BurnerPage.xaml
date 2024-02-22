@@ -2,11 +2,67 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KeroMaker.BurnerPage"
+             BackgroundImageSource="burner_background"
              Title="BurnerPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <!--header-->
+            <RowDefinition Height="75"/>
+            <!--margin-->
+            <RowDefinition Height="55"/>
+            <!--label-->
+            <RowDefinition Height="180"/>
+            <!--margin-->
+            <RowDefinition Height="35"/>
+            <!--horizontal bar-->
+            <RowDefinition Height="70"/>
+            <!--margin-->
+            <RowDefinition Height="70"/>
+            <!--button-->
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+
+            <ImageButton Source="left.png"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="10"
+                 HorizontalOptions="Start"
+                 Clicked="ImageLeftButton_Clicked" />
+
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeDispatcher" Text="00:00" TextColor="White"/>
+
+            <ImageButton Source="cog.svg"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="10"
+                 HorizontalOptions="End"
+                 Clicked="ImageButtonSettings_Clicked"/>
+        </StackLayout>
+        <Grid Grid.Row="2">
+            <Label x:Name="currentTemperature" Text="20 °C" FontSize="Title" HorizontalOptions="Center"/>
+        </Grid>
+        <Grid Grid.Row="4">
+            <Image x:Name="horizontalBarImage"
+                   Source="horizontal_bar2.png"
+                   Aspect="AspectFill" />
+            <AbsoluteLayout>
+                <Image x:Name="barLineImage"
+                        Source="bar_line"
+                        AbsoluteLayout.LayoutBounds="20,5"
+                        HeightRequest="26"/>
+            </AbsoluteLayout>
+        </Grid>
+        <Grid Grid.Row="6" >
+            <Button Text="Zwiększ moc"
+        Pressed="OnIncreasePowerButtonPressed"
+        Released="OnIncreasePowerButtonReleased"
+        HorizontalOptions="FillAndExpand" />
+        </Grid>
+
+    </Grid>
 </ContentPage>

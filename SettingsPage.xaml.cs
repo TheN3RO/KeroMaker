@@ -4,83 +4,80 @@ namespace KeroMaker;
 
 public partial class SettingsPage : ContentPage
 {
-    public partial class SettingsPage : ContentPage
+    public SettingsPage()
     {
-        public SettingsPage()
-        {
-            InitializeComponent();
-            BindingContext = new VolumeViewModel();
-        }
+        InitializeComponent();
+        BindingContext = new VolumeViewModel();
+    }
 
-        private void LeftButton_Cliked(object sender, EventArgs e)
+    private void LeftButton_Cliked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
+}
+public class VolumeViewModel : INotifyPropertyChanged
+{
+    private int volume;
+
+    public int Volume
+    {
+        get { return volume; }
+        set
         {
-            Navigation.PopAsync();
+            volume = value;
+            Preferences.Set("overallVolume", value);
+            OnPropertyChanged(nameof(Volume));
         }
     }
-    public class VolumeViewModel : INotifyPropertyChanged
+    private int music;
+
+    public int Music
     {
-        private int volume;
-
-        public int Volume
+        get { return music; }
+        set
         {
-            get { return volume; }
-            set
-            {
-                volume = value;
-                Preferences.Set("overallVolume", value);
-                OnPropertyChanged(nameof(Volume));
-            }
+            music = value;
+            Preferences.Set("musicVolume", value);
+            OnPropertyChanged(nameof(Music));
         }
-        private int music;
+    }
+    private int sound;
 
-        public int Music
+    public int Sound
+    {
+        get { return sound; }
+        set
         {
-            get { return music; }
-            set
-            {
-                music = value;
-                Preferences.Set("musicVolume", value);
-                OnPropertyChanged(nameof(Music));
-            }
+            sound = value;
+            Preferences.Set("soundsVolume", value);
+            OnPropertyChanged(nameof(Sound));
         }
-        private int sound;
+    }
 
-        public int Sound
+    public VolumeViewModel()
+    {
+        if (!Preferences.ContainsKey("overallVolume"))
         {
-            get { return sound; }
-            set
-            {
-                sound = value;
-                Preferences.Set("soundsVolume", value);
-                OnPropertyChanged(nameof(Sound));
-            }
+            Preferences.Set("overallVolume", 100);
         }
-
-        public VolumeViewModel()
+        if (!Preferences.ContainsKey("musicVolume"))
         {
-            if (!Preferences.ContainsKey("overallVolume"))
-            {
-                Preferences.Set("overallVolume", 100);
-            }
-            if (!Preferences.ContainsKey("musicVolume"))
-            {
-                Preferences.Set("musicVolume", 100);
-            }
-            if (!Preferences.ContainsKey("soundsVolume"))
-            {
-                Preferences.Set("soundsVolume", 100);
-            }
-
-            Volume = Preferences.Get("overallVolume", 0);
-            Music = Preferences.Get("musicVolume", 0);
-            Sound = Preferences.Get("soundsVolume", 0);
+            Preferences.Set("musicVolume", 100);
+        }
+        if (!Preferences.ContainsKey("soundsVolume"))
+        {
+            Preferences.Set("soundsVolume", 100);
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        Volume = Preferences.Get("overallVolume", 0);
+        Music = Preferences.Get("musicVolume", 0);
+        Sound = Preferences.Get("soundsVolume", 0);
+    }
 
-        protected virtual void OnPropertyChanged(string propertyName)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    protected virtual void OnPropertyChanged(string propertyName)
+    {
+        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 }

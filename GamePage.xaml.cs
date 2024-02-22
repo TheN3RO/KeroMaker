@@ -65,7 +65,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new IngredientsPage(ingredients));
+        Navigation.PushAsync(new IngredientPage(ingredients));
     }
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
@@ -77,7 +77,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageDestylator1_Tapped()
     {
-        Navigation.PushAsync(new IngredientsPage(ingredients));
+        Navigation.PushAsync(new IngredientPage(ingredients));
     }
     private void StartDispatcherTimer()
     {

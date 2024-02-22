@@ -59,11 +59,18 @@
 	  <None Remove="Resources\Fonts\main.ttf" />
 	  <None Remove="Resources\Images\background.png" />
 	  <None Remove="Resources\Images\background_start.png" />
+	  <None Remove="Resources\Images\Burner\bar_line.png" />
+	  <None Remove="Resources\Images\Burner\burner_background.png" />
+	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
 	  <None Remove="Resources\Images\play_circle_outline.svg" />
 	  <None Remove="Resources\Images\school_outline.svg" />
+	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
+	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
+	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
+	  <None Remove="Resources\Images\Tools\lamp.svg" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
 	</ItemGroup>
 
@@ -93,7 +100,7 @@
 	  <MauiXaml Update="HelpPageModels\AboutUs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="IngredientsPage.xaml">
+	  <MauiXaml Update="IngredientPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
@@ -102,11 +109,27 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Burner\bar_line.png" />
+	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
+	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator_1_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator_3_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\lamp.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
 	  <MauiSplashScreen Include="Resources\Splash\splash_img.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Tools\destylator_2_part.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="IngredientPage.xaml.cs">
+	    <DependentUpon>IngredientPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>
