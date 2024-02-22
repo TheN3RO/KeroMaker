@@ -32,7 +32,7 @@ namespace KeroMaker
         public void addIngredient(Ingredient ingredient)
         {
             mixtureComp.Add(ingredient);
-            FinalColor = MixColors(FinalColor, ingredient.ingColor);
+            FinalColor = MixColors(FinalColor, ingredient.IngColor);
         }
 
         private static Color MixColors(Color color1, Color color2)
