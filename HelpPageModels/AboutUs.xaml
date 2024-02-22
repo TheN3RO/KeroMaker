@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeroMaker.HelpPageModels.AboutUs"
+             Title="AboutUs">
+    <Grid BackgroundColor="{StaticResource Gray600}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Source="left.png"
+             WidthRequest="30"
+             HeightRequest="30"
+             Margin="10"
+             HorizontalOptions="Start"
+             Clicked="LeftButton_Cliked" />
+
+            <Label Text="O nas" FontSize="Title" VerticalOptions="CenterAndExpand" Margin="0,10,10,10" Grid.Column="1" HorizontalOptions="CenterAndExpand"/>
+        </Grid>
+        <Grid Grid.Row="1" BackgroundColor="{StaticResource BlackNight}">
+            <StackLayout>
+                <Label Margin="10" FontSize="Large" 
+                   Text='Witaj w KeroMaker, grze stworzonej przez Roberta Osiewicza i Maksyma Tiupę z Zespołu Szkół "Elektrk" im. Noblistów Polskich w Słupsku. Jesteśmy młodym zespołem zafascynowanym nauką chemiczną i technologią, inspirującym się historią Ignacego Łukasiewicza.' />
+                <Label Margin="10" FontSize="Large" 
+                   Text='Robert i Maksym, uczniowie "Elektryka", przenieśli tę fascynującą historię do świata gier, tworząc KeroMaker - grę, która nie tylko bawi, ale też edukuje. Projekt powstaje na potrzeby konkursu, ale dla nas to także okazja do dzielenia się pasją z graczami z całego świata.'/>
+                <Label Margin="10" FontSize="Large" 
+                   Text='Dołącz do naszej podróży przez historię chemicznych odkryć, wcielając się w rolę badacza i odtwarzając proces tworzenia nafty. Rozwijaj umiejętności, zgłębiaj tajniki chemii i technologii, a jednocześnie czerp radość z fascynującej rozgrywki. KeroMaker to interaktywne doświadczenie, które przeniesie Cię w świat Ignacego Łukasiewicza.'/>
+
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeroMaker.GamePage"
+             BackgroundImageSource="background.png" 
+             Title="GamePage">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="86"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+            <ImageButton Source="left.png"
+                     WidthRequest="30"
+                     HeightRequest="30"
+                     Margin="10"
+                     HorizontalOptions="Start"
+                     Clicked="ImageLeftButton_Clicked" />
+
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeDispatcher" Text="00:00" TextColor="White"/>
+
+            <ImageButton Source="cog.svg"
+             WidthRequest="30"
+             HeightRequest="30"
+             Margin="10"
+             HorizontalOptions="End"
+             Clicked="ImageButtonSettings_Clicked"/>
+        </StackLayout>
+
+        <Grid Grid.Row="2" x:Name="objContainer">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="140" />
+                <ColumnDefinition Width="186.6" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Grid.Column="0">
+                <ImageButton Source="destylator_2_part.svg" 
+                 HeightRequest="196.6" 
+                 Clicked="ImageDestylator2_Clicked"/>
+                <ImageButton Source="destylator_1_part.svg"
+                 HeightRequest="116.6"
+                 Clicked="ImageBurner_Clicked"/>
+            </StackLayout>
+
+            <AbsoluteLayout Grid.Column="1" HorizontalOptions="Start">
+                <ImageButton Source="destylator_3_part.svg"
+                HeightRequest="313.3"
+                AbsoluteLayout.LayoutBounds="0, 0, 186.6, 314"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                <ImageButton Source="lamp.svg"
+                WidthRequest="100"
+                HeightRequest="170"
+                AbsoluteLayout.LayoutBounds="0, 0, 360, 30"
+                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+            </AbsoluteLayout>
+        </Grid>
+
+        <AbsoluteLayout Grid.Row="2">
+            <Frame AbsoluteLayout.LayoutBounds="1, 1"
+           AbsoluteLayout.LayoutFlags="PositionProportional"
+           Margin="10"
+           Padding="5"
+           CornerRadius="50"
+           BackgroundColor="{StaticResource Secondary}">
+                <ImageButton Source="info_circle.svg" 
+                     WidthRequest="40"
+                     HeightRequest="40" 
+                     Clicked="ImageButtonHint_Clicked"/>
+            </Frame>
+        </AbsoluteLayout>
+    </Grid>
+</ContentPage>

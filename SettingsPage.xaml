@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KeroMaker.SettingsPage"
+             Title="SettingsPage">
+    <Grid BackgroundColor="{StaticResource Gray600}">
+        <!-- to robi SuperSigma Maksym "Black Damask" Tiupa Dmytrowycz -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid BackgroundColor="{StaticResource Primary}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <ImageButton Source="left.png"
+                 WidthRequest="30"
+                 HeightRequest="30"
+                 Margin="10"
+                 HorizontalOptions="Start"
+                 Clicked="LeftButton_Cliked" />
+
+            <Label Text="Ustawienia" FontSize="Title" VerticalOptions="CenterAndExpand" Margin="0,10,10,10" Grid.Column="1" HorizontalOptions="CenterAndExpand"/>
+        </Grid>
+
+        <Grid Grid.Row="1" Padding="10" BackgroundColor= "{StaticResource BlackNight}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="volume.png" WidthRequest="35" HeightRequest="35" Margin="5,10,20,0" Grid.Column="0"/>
+
+            <StackLayout Grid.Column="1">
+                <Label Text="{Binding Volume, StringFormat='Głośność ogólna: {0:F0}%'}" FontSize="Medium" />
+                <Slider x:Name="volumeSlider"
+                    Minimum="0"
+                    Maximum="100"
+                    Value="{Binding Volume, Mode=TwoWay}" 
+                    />
+
+                <Label/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="2" Padding="10" BackgroundColor= "{StaticResource BlackNight}" Margin="0,1,0,1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="music.png" WidthRequest="35" HeightRequest="35" Margin="5,10,20,0" Grid.Column="0"/>
+
+            <StackLayout Grid.Column="1">
+                <Label Text="{Binding Music, StringFormat='Głośność muzyki: {0:F0}%'}" FontSize="Medium" />
+                <Slider x:Name="musicSlider"
+                    Minimum="0"
+                    Maximum="100"
+                    Value="{Binding Music, Mode=TwoWay}" 
+                    />
+
+                <Label/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="3" Padding="10" BackgroundColor= "{StaticResource BlackNight}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="sound.png" WidthRequest="35" HeightRequest="35" Margin="5,10,20,0" Grid.Column="0"/>
+
+            <StackLayout Grid.Column="1">
+                <Label Text="{Binding Sound, StringFormat='Głośność dźwięków: {0:F0}%'}" FontSize="Medium" />
+                <Slider x:Name="soundSlider"
+                    Minimum="0"
+                    Maximum="100"
+                    Value="{Binding Sound, Mode=TwoWay}" 
+                    />
+
+                <Label/>
+            </StackLayout>
+        </Grid>
+        <Grid Grid.Row="4" BackgroundColor= "{StaticResource BlackNight}">
+
+        </Grid>
+    </Grid>
+</ContentPage>
