@@ -40,6 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash_img.svg" Color="#000" BaseSize="128,128" />
@@ -64,6 +65,7 @@
 	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
+	  <None Remove="Resources\Images\Ingredients\demo.svg" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
@@ -88,6 +90,7 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="8.0.7" />
 		<PackageReference Include="Plugin.Maui.Audio" Version="2.1.0" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.7" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="2.88.7" />
 	</ItemGroup>
@@ -120,6 +123,7 @@
 	  <MauiImage Include="Resources\Images\Burner\bar_line.png" />
 	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
+	  <MauiImage Include="Resources\Images\Ingredients\demo.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
@@ -135,13 +139,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash_img.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiImage Include="Resources\Images\Tools\destylator_2_part.svg" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>
