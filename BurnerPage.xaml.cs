@@ -5,29 +5,50 @@ namespace KeroMaker;
 public partial class BurnerPage : ContentPage
 {
     private bool isIncreasingPower = false;
-    private int temperature;
+    private bool isPlaying = false;
+    private bool isWon = false;
+    private double condition;
+    private double temperature;
     public BurnerPage()
     {
         InitializeComponent();
         BarLineResistance();
-        UpdateTemperature();
+        UpdateTemperatureAndCondition();
+        increaseButton.Text = "Start";
         temperature = 20;
+        condition = 100;
+
     }
-    private void ImageLeftButton_Clicked(object sender, EventArgs e)
+    private void Start(object sender, EventArgs e)
     {
-        Navigation.PopAsync();
-    }
-    private void ImageButtonSettings_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PushAsync(new SettingsPage());
+        increaseButton.Pressed -= Start;
+        increaseButton.Pressed += OnIncreasePowerButtonPressed;
+        isPlaying = true;
+        increaseButton.Text = "Mocniej!";
     }
     //15-340
     private void MoveBarLineLeft()
     {
         double x = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
+        double position = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
+        double i;
+
+        if (position < 140)
+        {
+            i = 2;
+        }
+        else if(position < 210)
+        {
+            i = 1.75;
+        }
+        else
+        {
+            i = 1.5;
+        }
+        
         if (x > 15)
         {
-            x = x - 2;
+            x = x - i;
         }
 
         AbsoluteLayout.SetLayoutBounds(barLineImage, new Rect(x, 5, barLineImage.Width, barLineImage.Height));
@@ -35,11 +56,25 @@ public partial class BurnerPage : ContentPage
 
     private void MoveBarLineRight()
     {
-
         double x = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
+        double position = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
+        double i;
+        if (position < 140)
+        {
+            i = 1.5;
+        }
+        else if (position < 210)
+        {
+            i = 3;
+        }
+        else
+        {
+            i = 2;
+        }
+
         if (x < 343)
         {
-            x = x + 2;
+            x = x + i;
         }
 
         AbsoluteLayout.SetLayoutBounds(barLineImage, new Rect(x, 5, barLineImage.Width, barLineImage.Height));
@@ -48,19 +83,105 @@ public partial class BurnerPage : ContentPage
     {
         Device.StartTimer(TimeSpan.FromMilliseconds(2), () =>
         {
-            if (!isIncreasingPower)
-            {
-                MoveBarLineLeft(); // Call the method to move the bar line left
-                return true; // Return true to keep the timer running
+            if (isPlaying) { 
+                if (!isIncreasingPower)
+                {
+                    MoveBarLineLeft();
+                    return true; 
+                }
+                else
+                {
+                    return false;
+                }
             }
             else
             {
-                return false;
+                return true;
             }
         });
     }
 
+    
 
+    private void DecreaseTemperature(double cold)
+    {
+        if (temperature > 20)
+        {
+            temperature -= cold;
+        }
+        ChangeTemperature();
+    }
+    private void IncreaseTemperature(double warmth)
+    {
+        temperature += warmth;
+        ChangeTemperature();
+        if(temperature >= 250)
+        {
+            isWon=true;
+            End();
+        }
+    }
+
+    private void ChangeTemperature()
+    {
+        currentTemperature.Text = Convert.ToString(Convert.ToInt32(temperature)) + "°C z 250°C";
+    }
+
+    private void DecreaseCondition(double destroy)
+    {
+        condition -= destroy;
+        currentCondition.Text= "Stan:" + Convert.ToString(Convert.ToInt32(condition)) + "%";
+        if (condition <= 0)
+        {
+            End();
+        }
+    }
+
+    private void UpdateTemperatureAndCondition()
+    {
+        // 60,85,110,140,168,190,215,245,275,295,335
+        Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
+        {
+            if (isPlaying) { 
+                double position = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
+                if (position < 60)
+                {
+                    DecreaseTemperature(8);
+                }
+                else if (position < 85)
+                {
+                    DecreaseTemperature(5);
+                }
+                else if (position < 110)
+                {
+                    IncreaseTemperature(0);
+                }
+                else if (position < 140)
+                {
+                    IncreaseTemperature(0.75);
+                }
+                else if (position < 168)
+                {
+                    IncreaseTemperature(1);
+                }
+                else if (position < 190)
+                {
+                    IncreaseTemperature(2.5);
+                }
+                else if (position < 275)
+                {
+                    IncreaseTemperature(4.5);
+                    DecreaseCondition(5);
+                }
+                else if (position >= 275)
+                {
+                    IncreaseTemperature(6);
+                    DecreaseCondition(10);
+                }
+            }
+            return true;
+        });
+    }
 
     // Event handler for the button press
     private void OnIncreasePowerButtonPressed(object sender, EventArgs e)
@@ -70,82 +191,41 @@ public partial class BurnerPage : ContentPage
         // Start moving the bar line right
         Device.StartTimer(TimeSpan.FromMilliseconds(2), () =>
         {
-            if (isIncreasingPower)
+            if (isPlaying)
             {
-                MoveBarLineRight();
-                return true; // Return true to keep the timer running
+                if (isIncreasingPower)
+                {
+                    MoveBarLineRight();
+                    return true; 
+                }
+                else
+                {
+                    return false; 
+                }
             }
             else
             {
-                return false; // Stop the timer
+                return true;
             }
+            
         });
     }
-
-    // Event handler for the button release
     private void OnIncreasePowerButtonReleased(object sender, EventArgs e)
     {
         isIncreasingPower = false;
         BarLineResistance();
     }
-    private void DecreaseTemperature(int cold)
+    private void End()
     {
-        if (temperature > 20)
-        {
-            temperature -= cold;
-        }
+        isPlaying = false;
+    } 
+    
+    private void ImageLeftButton_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
     }
-
-    private void IncreaseTemperature(int warmth)
+    private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        temperature += warmth;
-    }
-
-    private void UpdateTemperature()
-    {
-        // 60,85,110,140,168,190,215,245,275,295,335
-        Device.StartTimer(TimeSpan.FromMilliseconds(200), () =>
-        {
-            double position = AbsoluteLayout.GetLayoutBounds(barLineImage).X;
-            if (position < 60)
-            {
-                DecreaseTemperature(8);
-            }
-            else if (position < 85)
-            {
-                DecreaseTemperature(5);
-            }
-            else if (position > 110 && position < 140)
-            {
-                IncreaseTemperature(1);
-            }
-            else if (position < 168)
-            {
-                IncreaseTemperature(3);
-            }
-            else if (position < 190)
-            {
-                IncreaseTemperature(5);
-            }
-            else if (position < 275)
-            {
-                IncreaseTemperature(8);
-            }
-            else if (position >= 275)
-            {
-                IncreaseTemperature(10);
-            }
-            currentTemperature.Text = Convert.ToString(temperature) + "°C";
-            return true;
-        });
-    }
-    private void MoveLeftButton_Clicked(object sender, EventArgs e)
-    {
-        MoveBarLineLeft();
-    }
-
-    private void MoveRightButton_Clicked(object sender, EventArgs e)
-    {
-        MoveBarLineRight();
+        Navigation.PushAsync(new SettingsPage());
     }
 }
