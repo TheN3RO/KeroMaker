@@ -20,7 +20,7 @@
                      HorizontalOptions="Start"
                      Clicked="ImageLeftButton_Clicked" />
 
-            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeDispatcher" Text="00:00" TextColor="White"/>
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeWatch" Text="{Binding ElapsedTime}" TextColor="White"/>
 
             <ImageButton Source="cog.svg"
              WidthRequest="30"

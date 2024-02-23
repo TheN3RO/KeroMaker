@@ -24,9 +24,14 @@ public partial class IngredientPage : ContentPage
     //Tworzenie obiektu globalnego modyfikowalnego przez gracza
     Mixture playerMixture = GameData.Instance.Mixture;
 
+    TimeCounter timewatch = GameData.Instance.Timewatch;
+
     public IngredientPage(List<Ingredient> ingredients)
     {
         InitializeComponent();
+
+        // Inicjowanie licznika czasu gry
+        BindingContext = timewatch;
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
@@ -52,7 +57,7 @@ public partial class IngredientPage : ContentPage
 
                 var frame = new Frame
                 {
-                    BackgroundColor = new Color(255, 255, 255),
+                    BackgroundColor = new Color(0, 0, 0, 128),
                     CornerRadius = 10,
                     WidthRequest = 100
                 };
@@ -69,7 +74,7 @@ public partial class IngredientPage : ContentPage
                 {
                     HorizontalTextAlignment = TextAlignment.Center,
                     FontSize = Device.GetNamedSize(NamedSize.Large, typeof(Label)),
-                    TextColor = new Color(0, 0, 0),
+                    TextColor = new Color(173, 173, 173),
                     FontAttributes = FontAttributes.Bold
                 };
                 nameLabel.SetBinding(Label.TextProperty, "Name");
@@ -131,5 +136,21 @@ public partial class IngredientPage : ContentPage
 
             Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
         }
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
+    }
+
+    private void ImageLeftButton_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PopAsync();
+    }
+
+    private void ImageButtonSettings_Clicked(object sender, EventArgs e)
+    {
+        Navigation.PushAsync(new SettingsPage());
     }
 }
