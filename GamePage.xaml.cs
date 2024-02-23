@@ -4,28 +4,21 @@ namespace KeroMaker;
 
 public partial class GamePage : ContentPage
 {
-    private Stopwatch stopwatch;
-    private bool isCounting;
     List<Ingredient> ingredients = new List<Ingredient>();
 
-    //Tworzenie obiektu modyfikowalnego przez gracza
-    Mixture playerMixture = new Mixture();
+    //Tworzenie obiektu globalnego modyfikowalnego przez gracza
+    Mixture playerMixture = GameData.Instance.Mixture;
+
+    TimeCounter timewatch = GameData.Instance.Timewatch;
 
     public GamePage()
     {
         InitializeComponent();
 
         // Inicjowanie licznika czasu gry
-        stopwatch = new Stopwatch();
-        StartDispatcherTimer();
-        //Tworzenie kontenera
-        Grid container = objContainer;
+        BindingContext = timewatch;
+
         // Tworzenie obiektów pocz¹tkowych
-        var obj1 = new Image
-        {
-            Source = "cauldron.png",
-            Aspect = Aspect.AspectFit
-        };
         var destylator1 = new Image
         {
             Source = "destylator_1_part.svg",
@@ -46,8 +39,8 @@ public partial class GamePage : ContentPage
         });
 
         //Inicjalizowanie sk³adników bazowych
-        ingredients.Add(new Ingredient("ropa", new Color(0, 146, 0), "oil_container"));
-        ingredients.Add(new Ingredient("gaz", new Color(255, 255, 168), "gas"));
+        ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
+        ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
 
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
@@ -79,21 +72,10 @@ public partial class GamePage : ContentPage
     {
         Navigation.PushAsync(new IngredientPage(ingredients));
     }
-    private void StartDispatcherTimer()
-    {
-        stopwatch.Start();
-        isCounting = true;
-        Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
-        {
-            UpdateElapsedTime();
-            return isCounting;
-        });
-    }
 
-    private void UpdateElapsedTime()
+    protected override void OnAppearing()
     {
-        TimeSpan elapsed = stopwatch.Elapsed;
-        string elapsedTimeString = $"{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
-        gameTimeDispatcher.Text = elapsedTimeString;
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
     }
 }

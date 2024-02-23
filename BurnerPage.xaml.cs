@@ -4,11 +4,17 @@ namespace KeroMaker;
 
 public partial class BurnerPage : ContentPage
 {
+    TimeCounter timewatch = GameData.Instance.Timewatch;
+
     private bool isIncreasingPower = false;
     private int temperature;
     public BurnerPage()
     {
         InitializeComponent();
+
+        // Inicjowanie licznika czasu gry
+        BindingContext = timewatch;
+
         BarLineResistance();
         UpdateTemperature();
         temperature = 20;
@@ -147,5 +153,11 @@ public partial class BurnerPage : ContentPage
     private void MoveRightButton_Clicked(object sender, EventArgs e)
     {
         MoveBarLineRight();
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
     }
 }

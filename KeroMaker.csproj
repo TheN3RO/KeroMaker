@@ -65,11 +65,10 @@
 	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
-	  <None Remove="Resources\Images\Ingredients\demo.svg" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
-	  <None Remove="Resources\Images\Ingredients\potion.png" />
+	  <None Remove="Resources\Images\Ingredients\potion.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
 	  <None Remove="Resources\Images\play_circle_outline.svg" />
 	  <None Remove="Resources\Images\school_outline.svg" />
@@ -123,11 +122,10 @@
 	  <MauiImage Include="Resources\Images\Burner\bar_line.png" />
 	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
-	  <MauiImage Include="Resources\Images\Ingredients\demo.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
-	  <MauiImage Include="Resources\Images\Ingredients\potion.png" />
+	  <MauiImage Include="Resources\Images\Ingredients\potion.svg" />
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />
 	  <MauiImage Include="Resources\Images\Settings\left.png" />
 	  <MauiImage Include="Resources\Images\Settings\music.png" />

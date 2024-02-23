@@ -12,6 +12,8 @@ namespace KeroMaker
 
         public Mixture Mixture = new Mixture();
 
+        public TimeCounter Timewatch = new TimeCounter();
+
         // Obiekt blokujący używany do synchronizacji w środowisku wielowątkowym.
         private static readonly object _lock = new object();
 
