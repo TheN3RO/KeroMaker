@@ -25,7 +25,6 @@ namespace KeroMaker
             var image = new Image();
             image.Source = mixtureImageName;
 
-
             return image;
         }
 

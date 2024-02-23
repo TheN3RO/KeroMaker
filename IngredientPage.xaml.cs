@@ -1,6 +1,7 @@
 using Microsoft.Maui.Layouts;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace KeroMaker;
 
@@ -125,10 +126,10 @@ public partial class IngredientPage : ContentPage
         {
             var draggedFrame = (Image)e.Data.Properties["Image"];
             var ingredient = (Ingredient)draggedFrame.BindingContext;
-            var imageUrl = ingredient.ImageUrl;
-            Debug.Write(imageUrl);
 
             playerMixture.addIngredient(ingredient);
+
+            Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
         }
     }
 }
