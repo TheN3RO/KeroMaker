@@ -6,29 +6,30 @@ public partial class GamePage : ContentPage
 {
     List<Ingredient> ingredients = new List<Ingredient>();
 
+    //Tworzenie obiektu modyfikowalnego przez gracza
+    MainPage mainPage;
+    public GamePage(MainPage mainPage)
     //Tworzenie obiektu globalnego modyfikowalnego przez gracza
     Mixture playerMixture = GameData.Instance.Mixture;
 
     TimeCounter timewatch = GameData.Instance.Timewatch;
-
-    public GamePage()
     {
+        this.mainPage = mainPage;
         InitializeComponent();
-
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
 
-        // Tworzenie obiekt體 pocz箃kowych
+        // Tworzenie obiekt贸w pocz鹿tkowych
         var destylator1 = new Image
         {
             Source = "destylator_1_part.svg",
             Aspect = Aspect.AspectFit
         };
-        //Dodawanie obiekt體 do kontenera
+        //Dodawanie obiekt贸w do kontenera
         //container.Children.Add(obj1);
         //container.Children.Add(destylator1);
 
-        //Obs硊ga klikni阠ia objektu
+        //Obs鲁uga klikni锚cia objektu
         /*obj1.GestureRecognizers.Add(new TapGestureRecognizer
         {
             Command = new Command(() => ImageObj1_Tapped())
@@ -38,7 +39,7 @@ public partial class GamePage : ContentPage
             Command = new Command(() => ImageDestylator1_Tapped())
         });
 
-        //Inicjalizowanie sk砤dnik體 bazowych
+        //Inicjalizowanie sk鲁adnik贸w bazowych
         ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
         ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
 
@@ -47,14 +48,14 @@ public partial class GamePage : ContentPage
 
     }
 
-    //Wydarzenia klikni阠ia obiekt體
+    //Wydarzenia klikni锚cia obiekt贸w
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
     private void ImageBurner_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new BurnerPage());
+        Navigation.PushAsync(new BurnerPage(mainPage));
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
@@ -62,7 +63,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPage());
+        Navigation.PopAsync();
     }
     private void ImageButtonHint_Clicked(object sender, EventArgs e)
     {

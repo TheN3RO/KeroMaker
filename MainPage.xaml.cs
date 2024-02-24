@@ -1,30 +1,39 @@
-﻿using Plugin.Maui.Audio;
+﻿
+using System.Xml.Linq;
+using CommunityToolkit.Maui.Core.Primitives;
+using CommunityToolkit.Maui.Views;
+using Plugin.Maui.Audio;
 
 namespace KeroMaker
 {
     public partial class MainPage : ContentPage
     {
+        MediaElement mediaPlayer;
+
+        
         public MainPage()
         {
             InitializeComponent();
-
-            Play();
+            PlayMusic();
         }
-        public async void Play()
+        public double VolumeMusic
         {
-            var audioPlayer = AudioManager.Current.CreatePlayer(await FileSystem.OpenAppPackageFileAsync("tall_grass.wav"));
-            audioPlayer.Loop = true;
-            audioPlayer.Play();
+            get { return backgroundMusic.Volume; }
+            set { backgroundMusic.Volume = value; }
+        }
+        private void PlayMusic()
+        {
+          
             
         }
         private void ButtonPlay_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new GamePage());
+            Navigation.PushAsync(new GamePage(this));
         }
 
         private void ButtonSettings_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new SettingsPage());
+            Navigation.PushAsync(new SettingsPage(this));
         }
 
         private void ButtonTutorial_Clicked(object sender, EventArgs e)

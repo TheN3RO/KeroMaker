@@ -11,8 +11,10 @@ public partial class BurnerPage : ContentPage
     private bool isWon = false;
     private double condition;
     private double temperature;
-    public BurnerPage()
+    MainPage mainPage;
+    public BurnerPage(MainPage mainPage)
     {
+        this.mainPage = mainPage;
         InitializeComponent();
 
         // Inicjowanie licznika czasu gry
@@ -232,7 +234,7 @@ public partial class BurnerPage : ContentPage
     }
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
 
     protected override void OnAppearing()

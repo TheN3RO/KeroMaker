@@ -4,10 +4,23 @@ namespace KeroMaker;
 
 public partial class SettingsPage : ContentPage
 {
-    public SettingsPage()
+    public SettingsPage(MainPage mainPage)
     {
         InitializeComponent();
         BindingContext = new VolumeViewModel();
+
+        if (BindingContext is VolumeViewModel viewModel)
+        {
+            viewModel.PropertyChanged += (sender, e) =>
+            {
+                if (e.PropertyName == "Volume")
+                {
+                    double newVolume = viewModel.Volume;
+                    newVolume = newVolume / 100;
+                    mainPage.VolumeMusic = newVolume;
+                }
+            };
+        }
     }
 
     private void LeftButton_Cliked(object sender, EventArgs e)
@@ -53,7 +66,6 @@ public class VolumeViewModel : INotifyPropertyChanged
             OnPropertyChanged(nameof(Sound));
         }
     }
-
     public VolumeViewModel()
     {
         if (!Preferences.ContainsKey("overallVolume"))
