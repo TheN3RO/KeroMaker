@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Logging;
 using CommunityToolkit.Maui;
+using SkiaSharp.Views.Maui.Controls.Hosting;
 namespace KeroMaker
 {
     public static class MauiProgram
@@ -14,7 +15,8 @@ namespace KeroMaker
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                })
+                .UseSkiaSharp();
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif

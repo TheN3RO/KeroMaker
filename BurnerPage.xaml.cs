@@ -4,6 +4,8 @@ namespace KeroMaker;
 
 public partial class BurnerPage : ContentPage
 {
+    TimeCounter timewatch = GameData.Instance.Timewatch;
+
     private bool isIncreasingPower = false;
     private bool isPlaying = false;
     private bool isWon = false;
@@ -14,6 +16,10 @@ public partial class BurnerPage : ContentPage
     {
         this.mainPage = mainPage;
         InitializeComponent();
+
+        // Inicjowanie licznika czasu gry
+        BindingContext = timewatch;
+
         BarLineResistance();
         UpdateTemperatureAndCondition();
         increaseButton.Text = "Start";
@@ -229,5 +235,11 @@ public partial class BurnerPage : ContentPage
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new SettingsPage(mainPage));
+    }
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
     }
 }

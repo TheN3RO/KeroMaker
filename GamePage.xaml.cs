@@ -4,38 +4,32 @@ namespace KeroMaker;
 
 public partial class GamePage : ContentPage
 {
-    private Stopwatch stopwatch;
-    private bool isCounting;
     List<Ingredient> ingredients = new List<Ingredient>();
 
     //Tworzenie obiektu modyfikowalnego przez gracza
-    Mixture playerMixture = new Mixture();
     MainPage mainPage;
     public GamePage(MainPage mainPage)
+    //Tworzenie obiektu globalnego modyfikowalnego przez gracza
+    Mixture playerMixture = GameData.Instance.Mixture;
+
+    TimeCounter timewatch = GameData.Instance.Timewatch;
     {
         this.mainPage = mainPage;
         InitializeComponent();
         // Inicjowanie licznika czasu gry
-        stopwatch = new Stopwatch();
-        StartDispatcherTimer();
-        //Tworzenie kontenera
-        Grid container = objContainer;
-        // Tworzenie obiekt體 pocz箃kowych
-        var obj1 = new Image
-        {
-            Source = "cauldron.png",
-            Aspect = Aspect.AspectFit
-        };
+        BindingContext = timewatch;
+
+        // Tworzenie obiekt贸w pocz鹿tkowych
         var destylator1 = new Image
         {
             Source = "destylator_1_part.svg",
             Aspect = Aspect.AspectFit
         };
-        //Dodawanie obiekt體 do kontenera
+        //Dodawanie obiekt贸w do kontenera
         //container.Children.Add(obj1);
         //container.Children.Add(destylator1);
 
-        //Obs硊ga klikni阠ia objektu
+        //Obs鲁uga klikni锚cia objektu
         /*obj1.GestureRecognizers.Add(new TapGestureRecognizer
         {
             Command = new Command(() => ImageObj1_Tapped())
@@ -45,16 +39,16 @@ public partial class GamePage : ContentPage
             Command = new Command(() => ImageDestylator1_Tapped())
         });
 
-        //Inicjalizowanie sk砤dnik體 bazowych
-        ingredients.Add(new Ingredient("ropa", new Color(0, 146, 0), "oil_container"));
-        ingredients.Add(new Ingredient("gaz", new Color(255, 255, 168), "gas"));
+        //Inicjalizowanie sk鲁adnik贸w bazowych
+        ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
+        ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
 
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
 
     }
 
-    //Wydarzenia klikni阠ia obiekt體
+    //Wydarzenia klikni锚cia obiekt贸w
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new SettingsPage(mainPage));
@@ -79,21 +73,10 @@ public partial class GamePage : ContentPage
     {
         Navigation.PushAsync(new IngredientPage(ingredients));
     }
-    private void StartDispatcherTimer()
-    {
-        stopwatch.Start();
-        isCounting = true;
-        Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
-        {
-            UpdateElapsedTime();
-            return isCounting;
-        });
-    }
 
-    private void UpdateElapsedTime()
+    protected override void OnAppearing()
     {
-        TimeSpan elapsed = stopwatch.Elapsed;
-        string elapsedTimeString = $"{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
-        gameTimeDispatcher.Text = elapsedTimeString;
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
     }
 }
