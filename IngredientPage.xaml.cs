@@ -23,11 +23,13 @@ public partial class IngredientPage : ContentPage
 
     //Tworzenie obiektu globalnego modyfikowalnego przez gracza
     Mixture playerMixture = GameData.Instance.Mixture;
+    MainPage mainPage;
 
     TimeCounter timewatch = GameData.Instance.Timewatch;
 
-    public IngredientPage(List<Ingredient> ingredients)
+    public IngredientPage(List<Ingredient> ingredients, MainPage mainPage)
     {
+        this.mainPage = mainPage;
         InitializeComponent();
 
         // Inicjowanie licznika czasu gry
@@ -151,6 +153,6 @@ public partial class IngredientPage : ContentPage
 
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
 }

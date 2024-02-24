@@ -7,12 +7,10 @@ public partial class GamePage : ContentPage
     List<Ingredient> ingredients = new List<Ingredient>();
 
     //Tworzenie obiektu modyfikowalnego przez gracza
-    MainPage mainPage;
-    public GamePage(MainPage mainPage)
-    //Tworzenie obiektu globalnego modyfikowalnego przez gracza
-    Mixture playerMixture = GameData.Instance.Mixture;
+    MainPage mainPage;Mixture playerMixture = GameData.Instance.Mixture;
 
     TimeCounter timewatch = GameData.Instance.Timewatch;
+    public GamePage(MainPage mainPage)
     {
         this.mainPage = mainPage;
         InitializeComponent();
@@ -59,7 +57,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new IngredientPage(ingredients));
+        Navigation.PushAsync(new IngredientPage(ingredients,mainPage));
     }
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
@@ -71,7 +69,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageDestylator1_Tapped()
     {
-        Navigation.PushAsync(new IngredientPage(ingredients));
+        Navigation.PushAsync(new IngredientPage(ingredients, mainPage));
     }
 
     protected override void OnAppearing()
