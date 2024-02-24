@@ -79,11 +79,14 @@
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Raw\flying_chicks-1.wav" />
+	  <None Remove="Resources\Raw\honey_trees.mp3" />
 	  <None Remove="Resources\Raw\tall_grass.wav" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.0.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />

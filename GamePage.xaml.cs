@@ -10,11 +10,11 @@ public partial class GamePage : ContentPage
 
     //Tworzenie obiektu modyfikowalnego przez gracza
     Mixture playerMixture = new Mixture();
-
-    public GamePage()
+    MainPage mainPage;
+    public GamePage(MainPage mainPage)
     {
+        this.mainPage = mainPage;
         InitializeComponent();
-
         // Inicjowanie licznika czasu gry
         stopwatch = new Stopwatch();
         StartDispatcherTimer();
@@ -57,11 +57,11 @@ public partial class GamePage : ContentPage
     //Wydarzenia klikniêcia obiektów
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
     private void ImageBurner_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new BurnerPage());
+        Navigation.PushAsync(new BurnerPage(mainPage));
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
@@ -69,7 +69,7 @@ public partial class GamePage : ContentPage
     }
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPage());
+        Navigation.PopAsync();
     }
     private void ImageButtonHint_Clicked(object sender, EventArgs e)
     {

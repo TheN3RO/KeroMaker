@@ -9,8 +9,10 @@ public partial class BurnerPage : ContentPage
     private bool isWon = false;
     private double condition;
     private double temperature;
-    public BurnerPage()
+    MainPage mainPage;
+    public BurnerPage(MainPage mainPage)
     {
+        this.mainPage = mainPage;
         InitializeComponent();
         BarLineResistance();
         UpdateTemperatureAndCondition();
@@ -226,6 +228,6 @@ public partial class BurnerPage : ContentPage
     }
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
 }
