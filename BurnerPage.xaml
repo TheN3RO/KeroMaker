@@ -44,7 +44,10 @@
                  Clicked="ImageButtonSettings_Clicked"/>
         </StackLayout>
         <Grid Grid.Row="2">
-            <Label x:Name="currentTemperature" Text="20 °C" FontSize="Title" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="currentTemperature" Text="20 °C" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="currentCondition" Text="Stan:100%" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
         </Grid>
         <Grid Grid.Row="4">
             <Image x:Name="horizontalBarImage"
@@ -58,10 +61,10 @@
             </AbsoluteLayout>
         </Grid>
         <Grid Grid.Row="6" >
-            <Button Text="Zwiększ moc"
-        Pressed="OnIncreasePowerButtonPressed"
-        Released="OnIncreasePowerButtonReleased"
-        HorizontalOptions="FillAndExpand" />
+            <Button x:Name="increaseButton"
+                Pressed="Start"
+                Released="OnIncreasePowerButtonReleased"
+                HorizontalOptions="FillAndExpand" />
         </Grid>
 
     </Grid>

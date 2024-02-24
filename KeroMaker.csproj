@@ -80,6 +80,7 @@
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Raw\tall_grass.wav" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
 	</ItemGroup>
 
