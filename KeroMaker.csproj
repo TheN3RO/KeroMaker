@@ -116,7 +116,7 @@
 	  <MauiXaml Update="HelpPageModels\AboutUs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="HintPopupPage.xaml">
+	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="IngredientPage.xaml">
