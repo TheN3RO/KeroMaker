@@ -17,7 +17,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"/>
                 <RowDefinition Height="*"/>
-                <RowDefinition Height="70"/>
+                <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Label FontSize="25" Text="Poradnik" HorizontalOptions="Center" Margin="10"></Label>
             <ScrollView Grid.Row="1" HeightRequest="300">
