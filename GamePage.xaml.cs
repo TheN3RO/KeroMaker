@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using System.Diagnostics;
 
 namespace KeroMaker;
@@ -76,5 +77,10 @@ public partial class GamePage : ContentPage
     {
         base.OnAppearing();
         timewatch.StartDispatcherTimer();
+    }
+
+    private async void ShowPopupButton_Clicked(object sender, EventArgs e)
+    {
+        await this.ShowPopupAsync(new HintPopupPage());
     }
 }

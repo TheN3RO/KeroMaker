@@ -1,18 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KeroMaker
 {
-    public class Mixture
+    public class Mixture : INotifyPropertyChanged
     {
         List<Ingredient> mixtureComp = new List<Ingredient>(); //mixture composition
 
         private string mixtureImageName = "mixture_bottle.svg";
+        private string mixtureFullBottleName = "mixture_full_bottle.svg";
 
         private Color color = new Color(0, 0, 0);
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public Color FinalColor
         {
@@ -24,6 +28,8 @@ namespace KeroMaker
         {
             var image = new Image();
             image.Source = mixtureImageName;
+
+            OnPropertyChanged("image");
 
             return image;
         }
@@ -41,6 +47,11 @@ namespace KeroMaker
             float mixedBlue = (float)((color1.Blue + color2.Blue) / 2.0);
 
             return new Color(mixedRed, mixedGreen, mixedBlue);
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

@@ -1,7 +1,8 @@
+using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Layouts;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
-using System.Reflection;
+
 
 namespace KeroMaker;
 
@@ -61,7 +62,8 @@ public partial class IngredientPage : ContentPage
                 {
                     BackgroundColor = new Color(0, 0, 0, 128),
                     CornerRadius = 10,
-                    WidthRequest = 100
+                    WidthRequest = 100,
+                    Margin = 3,
                 };
 
                 var verticalStackLayout = new StackLayout
@@ -154,5 +156,10 @@ public partial class IngredientPage : ContentPage
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new SettingsPage(mainPage));
+    }
+
+    private async void ShowPopupButton_Clicked(object sender, EventArgs e)
+    {
+        await this.ShowPopupAsync(new HintPopupPage());
     }
 }

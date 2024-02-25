@@ -67,7 +67,7 @@
                 <ImageButton Source="info_circle.svg" 
                      WidthRequest="40"
                      HeightRequest="40" 
-                     Clicked="ImageButtonHint_Clicked"/>
+                     Clicked="ShowPopupButton_Clicked"/>
             </Frame>
         </AbsoluteLayout>
     </Grid>

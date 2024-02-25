@@ -1,3 +1,4 @@
+using CommunityToolkit.Maui.Views;
 using System.Reflection.Metadata.Ecma335;
 
 namespace KeroMaker;
@@ -241,5 +242,10 @@ public partial class BurnerPage : ContentPage
     {
         base.OnAppearing();
         timewatch.StartDispatcherTimer();
+    }
+
+    private async void ShowPopupButton_Clicked(object sender, EventArgs e)
+    {
+        await this.ShowPopupAsync(new HintPopupPage());
     }
 }

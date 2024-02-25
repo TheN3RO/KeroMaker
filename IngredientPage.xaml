@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="KeroMaker.IngredientPage"
              Title="IngredientPage">
     <Grid>
@@ -34,5 +35,19 @@
                         x:Name="DropZone">
         </AbsoluteLayout>
         <StackLayout Grid.Row="3" x:Name="items"></StackLayout>
+
+        <AbsoluteLayout Grid.Row="3">
+            <Frame AbsoluteLayout.LayoutBounds="1, 1"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   Margin="10"
+                   Padding="5"
+                   CornerRadius="50"
+                   BackgroundColor="{StaticResource Secondary}">
+                <ImageButton Source="info_circle.svg" 
+                             WidthRequest="40"
+                             HeightRequest="40" 
+                             Clicked="ShowPopupButton_Clicked"/>
+            </Frame>
+        </AbsoluteLayout>
     </Grid>
 </ContentPage>
