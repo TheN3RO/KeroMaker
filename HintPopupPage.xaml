@@ -15,10 +15,16 @@
             <StackLayout WidthRequest="300"
                          HeightRequest="300"
                          BackgroundColor="{StaticResource Gray600}">
-                
+                <Border BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <Label Text="1. Destylacja frakcyjna: Rozpocznij od destylacji frakcyjnej surowej ropy naftowej. W tym procesie podgrzewaj surową ropę naftową do temperatury do 250°C, co spowoduje odparowanie lekkich frakcji."/>
+                </Border>
+                <Border BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <Label Text="2. Rafinacja kwasem siarkowym: Przejdź do procesu rafinacji uzyskanego preparatu za pomocą stężonego roztworu kwasu siarkowego. Ten proces pozwala na usunięcie zanieczyszczeń i polepszenie jakości produktu."/>
+                </Border>
+                <Border BorderThickness="0,0,0,2" BorderBrush="Black">
+                    <Label Text="3. Otrzymywanie nafty: Po przeprowadzeniu procesu rafinacji otrzymasz naftę. W opisanym przypadku nafta została uzyskana na przełomie lat 1852–1853."/>
+                </Border>
             </StackLayout>
-
         </VerticalStackLayout>
-
     </Border>
 </mct:Popup>
