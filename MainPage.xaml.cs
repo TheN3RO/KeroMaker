@@ -10,25 +10,29 @@ namespace KeroMaker
     {
         MediaElement mediaPlayer;
 
-        
+        TimeCounter timewatch = GameData.Instance.Timewatch;
+
         public MainPage()
         {
             InitializeComponent();
-            PlayMusic();
         }
         public double VolumeMusic
         {
             get { return backgroundMusic.Volume; }
             set { backgroundMusic.Volume = value; }
         }
-        private void PlayMusic()
+        public MainPage(GamePage gamePage){
+            InitializeComponent();
+        }
+        public void StopMusic()
         {
-          
-            
+          backgroundMusic.Stop();
         }
         private void ButtonPlay_Clicked(object sender, EventArgs e)
         {
+            
             Navigation.PushAsync(new GamePage(this));
+            timewatch.RestartTimer();
         }
 
         private void ButtonSettings_Clicked(object sender, EventArgs e)

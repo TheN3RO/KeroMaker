@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="MauiToolkitPopupSample.PopUps.PausePopUp"
+             Color="Transparent"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+    <Border Padding="0" HeightRequest="400"
+           WidthRequest="300"
+           Stroke="Transparent"
+           BackgroundColor="Transparent">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="28"/>
+        </Border.StrokeShape>
+        <FlexLayout  ZIndex="2" Direction="Column" AlignItems="Center"  BackgroundColor="{StaticResource Gray500}" JustifyContent="SpaceEvenly">
+            <Label Text="Pauza" FontSize="44" TextColor="White" FontFamily="logo_start.ttf" VerticalOptions="Start" Margin="20"/>
+
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" Margin="20">
+                <Button Text="Wróć do gry"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="ButtonReturn_Clicked" 
+                    Margin="10"
+                    WidthRequest="160"/>
+                <Button Text="Wróć do menu"
+                    HorizontalOptions="FillAndExpand"
+                    Clicked="ButtonMenu_Clicked" 
+                    Margin="10"
+                    WidthRequest="160"/>
+            </StackLayout>
+        </FlexLayout>
+    </Border>
+</mct:Popup>

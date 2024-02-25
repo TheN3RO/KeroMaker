@@ -74,6 +74,7 @@
 	  <None Remove="Resources\Images\school_outline.svg" />
 	  <None Remove="Resources\Images\Settings\left.png" />
 	  <None Remove="Resources\Images\Settings\music.png" />
+	  <None Remove="Resources\Images\Settings\pause.svg" />
 	  <None Remove="Resources\Images\Settings\sound.png" />
 	  <None Remove="Resources\Images\Settings\volume.png" />
 	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
@@ -121,6 +122,9 @@
 	  <MauiXaml Update="IngredientPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\PausePopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -137,6 +141,7 @@
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />
 	  <MauiImage Include="Resources\Images\Settings\left.png" />
 	  <MauiImage Include="Resources\Images\Settings\music.png" />
+	  <MauiImage Include="Resources\Images\Settings\pause.svg" />
 	  <MauiImage Include="Resources\Images\Settings\sound.png" />
 	  <MauiImage Include="Resources\Images\Settings\volume.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator_1_part.svg" />

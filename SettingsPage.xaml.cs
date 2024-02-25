@@ -16,8 +16,18 @@ public partial class SettingsPage : ContentPage
                 if (e.PropertyName == "Volume")
                 {
                     double newVolume = viewModel.Volume;
+                    double music =  viewModel.Music;
                     newVolume = newVolume / 100;
-                    mainPage.VolumeMusic = newVolume;
+                    music = music / 100;
+                    mainPage.VolumeMusic = music * newVolume;
+                }
+                else if (e.PropertyName == "Music")
+                {
+                    double newMusic = viewModel.Music;
+                    double volume = viewModel.Volume;
+                    volume = volume / 100;
+                    newMusic = newMusic / 100;
+                    mainPage.VolumeMusic = newMusic * volume;
                 }
             };
         }
