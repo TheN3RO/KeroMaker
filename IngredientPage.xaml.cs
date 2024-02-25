@@ -38,7 +38,7 @@ public partial class IngredientPage : ContentPage
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
-        var mixtureImage = playerMixture.mixtureImage();
+        var mixtureImage = playerMixture.Image;
         mixtureImage.Margin = new Thickness(0, 0, 0, -50);
         mixtureImage.WidthRequest = 470;
         mixtureImage.HeightRequest = 470;
@@ -138,6 +138,8 @@ public partial class IngredientPage : ContentPage
 
             playerMixture.addIngredient(ingredient);
 
+            playerMixture.Image.Source = "mixture_in_bottle.svg";
+
             Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
         }
     }
@@ -161,5 +163,11 @@ public partial class IngredientPage : ContentPage
     private async void ShowPopupButton_Clicked(object sender, EventArgs e)
     {
         await this.ShowPopupAsync(new HintPopupPage());
+    }
+
+    private void RangeSlider_ValueChanged(object sender, ValueChangedEventArgs e)
+    {
+        // Handle the value change here
+        double newValue = e.NewValue;
     }
 }

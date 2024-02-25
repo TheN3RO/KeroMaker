@@ -67,6 +67,7 @@
 	  <None Remove="Resources\Images\info_circle.svg" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
+	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
 	  <None Remove="Resources\Images\Ingredients\potion.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
@@ -136,6 +137,7 @@
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\potion.svg" />
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />

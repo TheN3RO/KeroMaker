@@ -34,6 +34,21 @@
         <AbsoluteLayout Grid.Row="2"
                         x:Name="DropZone">
         </AbsoluteLayout>
+        <AbsoluteLayout Grid.Row="2"
+                        HeightRequest="240">
+            <VerticalStackLayout AbsoluteLayout.LayoutBounds="1, 0.5"
+                                AbsoluteLayout.LayoutFlags="PositionProportional">
+                <Slider x:Name="RangeSlider"
+                        Minimum="0"
+                        Maximum="200"
+                        Value="50"
+                        ValueChanged="RangeSlider_ValueChanged" 
+                        Rotation="270" />
+                <Label Text="{Binding Value, Source={x:Reference RangeSlider}, StringFormat='Sloty: {0:F0}'}" />
+            </VerticalStackLayout>
+            
+        </AbsoluteLayout>
+        
         <StackLayout Grid.Row="3" x:Name="items"></StackLayout>
 
         <AbsoluteLayout Grid.Row="3">

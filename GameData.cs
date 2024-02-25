@@ -18,7 +18,10 @@ namespace KeroMaker
         private static readonly object _lock = new object();
 
         // Prywatny konstruktor, aby zapobiec tworzeniu instancji z zewnątrz.
-        private GameData() { }
+        private GameData() 
+        {
+            Mixture.Image.Source = "mixture_bottle.svg";
+        }
 
         // Publiczna właściwość statyczna zapewniająca dostęp do instancji.
         public static GameData Instance
