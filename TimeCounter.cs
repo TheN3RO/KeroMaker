@@ -37,7 +37,14 @@ namespace KeroMaker
                 return isCounting;
             });
         }
-
+        internal void PauseTimer()
+        {
+            stopwatch.Stop();
+        }
+        internal void RestartTimer()
+        {
+            stopwatch.Restart();
+        }
         private string UpdateElapsedTime()
         {
             TimeSpan elapsed = stopwatch.Elapsed;

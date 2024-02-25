@@ -1,11 +1,13 @@
 using System.Diagnostics;
+using CommunityToolkit.Maui.Views;
+using MauiToolkitPopupSample.PopUps;
 
 namespace KeroMaker;
 
 public partial class GamePage : ContentPage
 {
     List<Ingredient> ingredients = new List<Ingredient>();
-
+    Popup popup;
     //Tworzenie obiektu modyfikowalnego przez gracza
     MainPage mainPage;Mixture playerMixture = GameData.Instance.Mixture;
 
@@ -43,9 +45,22 @@ public partial class GamePage : ContentPage
 
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
-
+        
     }
-
+    private async void ImagePauseButton_Clicked(object sender, EventArgs e)
+    {
+        var popup = new PausePopUp(mainPage);
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is "toMenu")
+        {
+            await Navigation.PopAsync();
+        }
+        else
+        {
+            timewatch.StartDispatcherTimer();
+        }
+    }
     //Wydarzenia klikniêcia obiektów
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
@@ -58,10 +73,6 @@ public partial class GamePage : ContentPage
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
         Navigation.PushAsync(new IngredientPage(ingredients,mainPage));
-    }
-    private void ImageLeftButton_Clicked(object sender, EventArgs e)
-    {
-        Navigation.PopAsync();
     }
     private void ImageButtonHint_Clicked(object sender, EventArgs e)
     {
