@@ -1,18 +1,34 @@
-﻿using System;
+﻿using Microsoft.Maui.Animations;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KeroMaker
 {
-    public class Mixture
+    public class Mixture : INotifyPropertyChanged
     {
-        List<Ingredient> mixtureComp = new List<Ingredient>(); //mixture composition
-
-        private string mixtureImageName = "mixture_bottle.svg";
+        public ObservableCollection<Ingredient> mixtureComp = new ObservableCollection<Ingredient>(); //mixture composition
 
         private Color color = new Color(0, 0, 0);
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private Image image = new();
+
+        public Image Image
+        {
+            get { return image; }
+            set 
+            { 
+                image = value;
+                OnPropertyChanged("image");
+            }
+        }
 
         public Color FinalColor
         {
@@ -20,19 +36,13 @@ namespace KeroMaker
             set { color = value; }
         }
 
-        public Image mixtureImage()
-        {
-            var image = new Image();
-            image.Source = mixtureImageName;
-
-
-            return image;
-        }
-
         public void addIngredient(Ingredient ingredient)
         {
-            mixtureComp.Add(ingredient);
-            FinalColor = MixColors(FinalColor, ingredient.ingColor);
+            FinalColor = MixColors(FinalColor, ingredient.IngColor);
+            if (mixtureComp.Count < 4) //max 4 items in mixtures
+            {
+                mixtureComp.Add(ingredient);
+            }
         }
 
         private static Color MixColors(Color color1, Color color2)
@@ -42,6 +52,11 @@ namespace KeroMaker
             float mixedBlue = (float)((color1.Blue + color2.Blue) / 2.0);
 
             return new Color(mixedRed, mixedGreen, mixedBlue);
+        }
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }

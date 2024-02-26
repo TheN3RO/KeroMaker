@@ -2,29 +2,42 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KeroMaker.MainPage"
-             Shell.NavBarIsVisible="False">
+             Shell.NavBarIsVisible="False"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit">
 
-    <Grid>
+    <Grid x:Name="myStack">
+        
+        <toolkit:MediaElement x:Name="backgroundMusic"
+              Source="embed://honey_trees.mp3"
+              ShouldAutoPlay="True"
+              ShouldLoopPlayback="True"
+              Volume="1"/>
         <Image Source="background_start.png" Aspect="AspectFill"/>
-
-        <FlexLayout Direction="Column"
-        AlignItems="Center"
-        JustifyContent="SpaceEvenly">
+        
+        <FlexLayout 
+            Direction="Column"
+            AlignItems="Center"
+            JustifyContent="SpaceEvenly">
+            
             <Label Text="KeroMaker" FontSize="64" TextColor="White" FontFamily="logo_start.ttf"/>
 
-            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand">
+            <StackLayout Orientation="Vertical" HorizontalOptions="FillAndExpand" >
+                
                 <Button Text="Graj"
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonPlay_Clicked" 
-                    Margin="10"/>
+                    Margin="10"
+                    WidthRequest="130"/>
                 <Button Text="Ustawienia" 
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonSettings_Clicked"
-                    Margin="10"/>
+                    Margin="10"
+                    WidthRequest="130"/>
                 <Button Text="Poradnik"
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonTutorial_Clicked"
-                    Margin="10"/>
+                    Margin="10"
+                    WidthRequest="130"/>
             </StackLayout>
         </FlexLayout>
     </Grid>

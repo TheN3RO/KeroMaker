@@ -40,6 +40,7 @@
 
 	<ItemGroup>
 		<!-- App Icon -->
+		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash_img.svg" Color="#000" BaseSize="128,128" />
@@ -64,22 +65,42 @@
 	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
+	  <None Remove="Resources\Images\Ingredients\gas.svg" />
+	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
+	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.svg" />
+	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
+	  <None Remove="Resources\Images\Ingredients\potion.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
 	  <None Remove="Resources\Images\play_circle_outline.svg" />
 	  <None Remove="Resources\Images\school_outline.svg" />
+	  <None Remove="Resources\Images\Settings\left.png" />
+	  <None Remove="Resources\Images\Settings\music.png" />
+	  <None Remove="Resources\Images\Settings\pause.svg" />
+	  <None Remove="Resources\Images\Settings\sound.png" />
+	  <None Remove="Resources\Images\Settings\volume.png" />
 	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Raw\flame_burn.wav" />
+	  <None Remove="Resources\Raw\flame_off.wav" />
+	  <None Remove="Resources\Raw\flame_on.wav" />
+	  <None Remove="Resources\Raw\flying_chicks-1.wav" />
+	  <None Remove="Resources\Raw\gas-burner-mono.mp3" />
+	  <None Remove="Resources\Raw\honey_trees.mp3" />
+	  <None Remove="Resources\Raw\tall_grass.wav" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
+		<PackageReference Include="CommunityToolkit.Maui" Version="7.0.1" />
+		<PackageReference Include="CommunityToolkit.Maui.MediaElement" Version="3.0.1" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Maui.Controls.Compatibility" Version="8.0.7" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
 		<PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="8.0.7" />
 		<PackageReference Include="Plugin.Maui.Audio" Version="2.1.0" />
+		<PackageReference Include="SkiaSharp.Svg" Version="1.60.0" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Controls" Version="2.88.7" />
 		<PackageReference Include="SkiaSharp.Views.Maui.Core" Version="2.88.7" />
 	</ItemGroup>
@@ -100,7 +121,13 @@
 	  <MauiXaml Update="HelpPageModels\AboutUs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="IngredientPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\PausePopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="SettingsPage.xaml">
@@ -112,20 +139,26 @@
 	  <MauiImage Include="Resources\Images\Burner\bar_line.png" />
 	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
+	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\potion.svg" />
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />
+	  <MauiImage Include="Resources\Images\Settings\left.png" />
+	  <MauiImage Include="Resources\Images\Settings\music.png" />
+	  <MauiImage Include="Resources\Images\Settings\pause.svg" />
+	  <MauiImage Include="Resources\Images\Settings\sound.png" />
+	  <MauiImage Include="Resources\Images\Settings\volume.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator_1_part.svg" />
 	  <MauiImage Include="Resources\Images\Tools\destylator_3_part.svg" />
 	  <MauiImage Include="Resources\Images\Tools\lamp.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiSplashScreen Include="Resources\Splash\splash_img.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <MauiImage Include="Resources\Images\Tools\destylator_2_part.svg" />
 	</ItemGroup>
-
+	
 	<ItemGroup>
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>

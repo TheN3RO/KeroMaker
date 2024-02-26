@@ -1,41 +1,36 @@
+using CommunityToolkit.Maui.Views;
 using System.Diagnostics;
+using CommunityToolkit.Maui.Views;
+using MauiToolkitPopupSample.PopUps;
 
 namespace KeroMaker;
 
 public partial class GamePage : ContentPage
 {
-    private Stopwatch stopwatch;
-    private bool isCounting;
     List<Ingredient> ingredients = new List<Ingredient>();
-
+    Popup popup;
     //Tworzenie obiektu modyfikowalnego przez gracza
-    Mixture playerMixture = new Mixture();
+    MainPage mainPage;Mixture playerMixture = GameData.Instance.Mixture;
 
-    public GamePage()
+    TimeCounter timewatch = GameData.Instance.Timewatch;
+    public GamePage(MainPage mainPage)
     {
+        this.mainPage = mainPage;
         InitializeComponent();
-
         // Inicjowanie licznika czasu gry
-        stopwatch = new Stopwatch();
-        StartDispatcherTimer();
-        //Tworzenie kontenera
-        Grid container = objContainer;
-        // Tworzenie obiekt體 pocz箃kowych
-        var obj1 = new Image
-        {
-            Source = "cauldron.png",
-            Aspect = Aspect.AspectFit
-        };
+        BindingContext = timewatch;
+
+        // Tworzenie obiekt贸w pocz鹿tkowych
         var destylator1 = new Image
         {
             Source = "destylator_1_part.svg",
             Aspect = Aspect.AspectFit
         };
-        //Dodawanie obiekt體 do kontenera
+        //Dodawanie obiekt贸w do kontenera
         //container.Children.Add(obj1);
         //container.Children.Add(destylator1);
 
-        //Obs硊ga klikni阠ia objektu
+        //Obs鲁uga klikni锚cia objektu
         /*obj1.GestureRecognizers.Add(new TapGestureRecognizer
         {
             Command = new Command(() => ImageObj1_Tapped())
@@ -45,55 +40,64 @@ public partial class GamePage : ContentPage
             Command = new Command(() => ImageDestylator1_Tapped())
         });
 
-        //Inicjalizowanie sk砤dnik體 bazowych
-        ingredients.Add(new Ingredient("ropa", new Color(0, 146, 0), "oil_container"));
-        ingredients.Add(new Ingredient("gaz", new Color(255, 255, 168), "gas"));
+        //Inicjalizowanie sk鲁adnik贸w bazowych
+        ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
+        ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
 
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
-
+        
     }
-
-    //Wydarzenia klikni阠ia obiekt體
+    private async void ImagePauseButton_Clicked(object sender, EventArgs e)
+    {
+        var popup = new PausePopUp(mainPage);
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is "toMenu")
+        {
+            await Navigation.PopAsync();
+        }
+        else
+        {
+            timewatch.StartDispatcherTimer();
+        }
+    }
+    //Wydarzenia klikni锚cia obiekt贸w
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SettingsPage());
+        Navigation.PushAsync(new SettingsPage(mainPage));
     }
     private void ImageBurner_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new BurnerPage());
+        Navigation.PushAsync(new BurnerPage(mainPage));
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new IngredientPage(ingredients));
+        Navigation.PushAsync(new IngredientPage(ingredients,mainPage));
     }
-    private void ImageLeftButton_Clicked(object sender, EventArgs e)
+    private async void ImageButtonHint_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new MainPage());
-    }
-    private void ImageButtonHint_Clicked(object sender, EventArgs e)
-    {
-        //TODO: System podpowiedzi
+        var popup = new HintPopupPage();
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is null)
+        {
+            timewatch.StartDispatcherTimer();
+        }
     }
     private void ImageDestylator1_Tapped()
     {
-        Navigation.PushAsync(new IngredientPage(ingredients));
-    }
-    private void StartDispatcherTimer()
-    {
-        stopwatch.Start();
-        isCounting = true;
-        Device.StartTimer(TimeSpan.FromMilliseconds(100), () =>
-        {
-            UpdateElapsedTime();
-            return isCounting;
-        });
+        Navigation.PushAsync(new IngredientPage(ingredients, mainPage));
     }
 
-    private void UpdateElapsedTime()
+    protected override void OnAppearing()
     {
-        TimeSpan elapsed = stopwatch.Elapsed;
-        string elapsedTimeString = $"{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
-        gameTimeDispatcher.Text = elapsedTimeString;
+        base.OnAppearing();
+        timewatch.StartDispatcherTimer();
+    }
+
+    private async void ShowPopupButton_Clicked(object sender, EventArgs e)
+    {
+        await this.ShowPopupAsync(new HintPopupPage());
     }
 }

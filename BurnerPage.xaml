@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage x:Name="contentPage"
+             xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KeroMaker.BurnerPage"
              BackgroundImageSource="burner_background"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              Title="BurnerPage">
     <Grid >
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="75"/>
             <!--header-->
@@ -21,10 +24,9 @@
             <RowDefinition Height="70"/>
             <!--button-->
             <RowDefinition Height="*"/>
+            <RowDefinition Height="1"/>
         </Grid.RowDefinitions>
-
-
-
+        
         <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
 
             <ImageButton Source="left.png"
@@ -34,7 +36,7 @@
                  HorizontalOptions="Start"
                  Clicked="ImageLeftButton_Clicked" />
 
-            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeDispatcher" Text="00:00" TextColor="White"/>
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large"  x:Name="gameTimeDispatcher" Text="{Binding ElapsedTime}" TextColor="White"/>
 
             <ImageButton Source="cog.svg"
                  WidthRequest="30"
@@ -44,7 +46,10 @@
                  Clicked="ImageButtonSettings_Clicked"/>
         </StackLayout>
         <Grid Grid.Row="2">
-            <Label x:Name="currentTemperature" Text="20 °C" FontSize="Title" HorizontalOptions="Center"/>
+            <StackLayout Orientation="Horizontal">
+                <Label x:Name="currentTemperature" Text="20 °C" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
+                <Label x:Name="currentCondition" Text="Stan:100%" FontSize="Title" HorizontalOptions="CenterAndExpand"/>
+            </StackLayout>
         </Grid>
         <Grid Grid.Row="4">
             <Image x:Name="horizontalBarImage"
@@ -58,10 +63,41 @@
             </AbsoluteLayout>
         </Grid>
         <Grid Grid.Row="6" >
-            <Button Text="Zwiększ moc"
-        Pressed="OnIncreasePowerButtonPressed"
-        Released="OnIncreasePowerButtonReleased"
-        HorizontalOptions="FillAndExpand" />
+            <Button x:Name="increaseButton"
+                Pressed="Start"
+                Released="OnIncreasePowerButtonReleased"
+                HorizontalOptions="FillAndExpand" />
+        </Grid>
+
+        <AbsoluteLayout Grid.Row="7">
+            <Frame AbsoluteLayout.LayoutBounds="1, 1"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   Margin="10"
+                   Padding="5"
+                   CornerRadius="50"
+                   BackgroundColor="{StaticResource Secondary}">
+                <ImageButton Source="info_circle.svg" 
+                             WidthRequest="40"
+                             HeightRequest="40" 
+                             Clicked="ShowPopupButton_Clicked"/>
+            </Frame>
+        </AbsoluteLayout>
+        <Grid Grid.Row="8">
+            <toolkit:MediaElement x:Name="flameOnSound"
+                Source="embed://flame_on.wav"
+                ShouldAutoPlay="False"
+                ShouldLoopPlayback="False"
+                Volume="1"/>
+            <toolkit:MediaElement x:Name="flameBurnSound"
+                Source="embed://flame_burn.wav"
+                ShouldAutoPlay="False"
+                ShouldLoopPlayback="True"
+                Volume="0.01"/>
+            <toolkit:MediaElement x:Name="flameOffSound"
+                Source="embed://flame_off.wav"
+                ShouldAutoPlay="False"
+                ShouldLoopPlayback="False"
+                Volume="1"/>
         </Grid>
 
     </Grid>

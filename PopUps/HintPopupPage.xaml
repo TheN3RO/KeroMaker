@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="KeroMaker.HintPopupPage"
+             Color="Transparent"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Border Stroke="#af6e18"
+        StrokeThickness="4"
+        Background="#eb9827"
+        Padding="16,8"
+        HorizontalOptions="Center">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="40,40,40,40" />
+        </Border.StrokeShape>
+
+        <Grid WidthRequest="300"
+                  BackgroundColor="#eb9827" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Label FontSize="25" Text="Poradnik" TextColor="#583700" HorizontalOptions="Center" Margin="10"></Label>
+            <ScrollView Grid.Row="1" HeightRequest="300">
+                <Label FontSize="18" TextColor="#583700">
+                    <Label.Text>
+                        <x:String>
+Destylacja frakcyjna: Rozpocznij od 
+destylacji frakcyjnej surowej ropy 
+naftowej. W tym procesie podgrzewaj
+surową ropę naftową do temperatury do
+250°C, co spowoduje odparowanielekkich
+frakcji.
+                            
+    
+Rafinacja kwasem siarkowym: 
+Przejdź do procesu rafinacji 
+uzyskanego preparatu za pomocą 
+stężonego roztworu kwasu siarkowego. 
+Ten proces pozwala na usunięcie 
+zanieczyszczeń i polepszenie jakości
+produktu.
+                            
+                            
+Otrzymywanie nafty: 
+Po przeprowadzeniu procesu rafinacji 
+otrzymasz naftę. W opisanym przypadku
+nafta została uzyskana na przełomie
+lat 1852–1853.
+                        </x:String>
+                    </Label.Text>
+                </Label>
+            </ScrollView>
+            <Button Grid.Row="2" Text="OK" TextColor="#583700" HorizontalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#af6e18"></Button>
+        </Grid>
+
+    </Border>
+</mct:Popup>

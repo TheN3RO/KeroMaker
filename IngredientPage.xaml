@@ -1,18 +1,58 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
              x:Class="KeroMaker.IngredientPage"
              Title="IngredientPage">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
+            <RowDefinition Height="75"/>
+            <RowDefinition Height="75"/>
             <RowDefinition Height="*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Image Grid.RowSpan="3" Source="ingredients_bg.png" Aspect="Center" />
-        <AbsoluteLayout Grid.Row="1"
+        <Image Grid.RowSpan="4" Source="ingredients_bg.png" Aspect="Center" />
+        <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
+
+            <ImageButton Source="left.png"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         Margin="10"
+                         HorizontalOptions="Start"
+                         Clicked="ImageLeftButton_Clicked" />
+
+            <Label HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" FontSize="Large" Text="{Binding ElapsedTime}" TextColor="White"/>
+
+            <ImageButton Source="cog.svg"
+                         WidthRequest="30"
+                         HeightRequest="30"
+                         Margin="10"
+                         HorizontalOptions="End"
+                         Clicked="ImageButtonSettings_Clicked"/>
+        </StackLayout>
+
+        <AbsoluteLayout Grid.Row="2"
                         x:Name="DropZone">
         </AbsoluteLayout>
-        <StackLayout Grid.Row="2" x:Name="items"></StackLayout>
+        <StackLayout Grid.Row="3" x:Name="items" />
+
+        <AbsoluteLayout Grid.Row="3">
+            <Label  Grid.Row="3"
+                    AbsoluteLayout.LayoutBounds="0, 0.5"
+                    AbsoluteLayout.LayoutFlags="PositionProportional"
+                    x:Name="FreeSlotsLabel"
+                    Text="Sloty: 0/4"/>
+            <Frame AbsoluteLayout.LayoutBounds="1, 1"
+                   AbsoluteLayout.LayoutFlags="PositionProportional"
+                   Margin="10"
+                   Padding="5"
+                   CornerRadius="50"
+                   BackgroundColor="{StaticResource Secondary}">
+                <ImageButton Source="info_circle.svg" 
+                             WidthRequest="40"
+                             HeightRequest="40" 
+                             Clicked="ShowPopupButton_Clicked"/>
+            </Frame>
+        </AbsoluteLayout>
     </Grid>
 </ContentPage>
