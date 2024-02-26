@@ -11,7 +11,7 @@
               Source="embed://honey_trees.mp3"
               ShouldAutoPlay="True"
               ShouldLoopPlayback="True"
-              Volume="0.5"/>
+              Volume="1"/>
         <Image Source="background_start.png" Aspect="AspectFill"/>
         
         <FlexLayout 

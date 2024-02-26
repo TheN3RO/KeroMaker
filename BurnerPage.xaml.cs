@@ -1,3 +1,4 @@
+
 using CommunityToolkit.Maui.Views;
 using System.Reflection.Metadata.Ecma335;
 
@@ -12,12 +13,13 @@ public partial class BurnerPage : ContentPage
     private bool isWon = false;
     private double condition;
     private double temperature;
+
     MainPage mainPage;
+    double soundVolume=1;
     public BurnerPage(MainPage mainPage)
     {
         this.mainPage = mainPage;
         InitializeComponent();
-
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
 
@@ -28,10 +30,17 @@ public partial class BurnerPage : ContentPage
         condition = 100;
 
     }
+    public double VolumeSound
+    {
+        get { return soundVolume;}
+        set { soundVolume = value;}
+    }
     private void Start(object sender, EventArgs e)
     {
         increaseButton.Pressed -= Start;
         increaseButton.Pressed += OnIncreasePowerButtonPressed;
+        flameOnSound.Volume = soundVolume;
+        flameOnSound.Play();
         isPlaying = true;
         increaseButton.Text = "Mocniej!";
     }
@@ -196,36 +205,41 @@ public partial class BurnerPage : ContentPage
     private void OnIncreasePowerButtonPressed(object sender, EventArgs e)
     {
         isIncreasingPower = true;
-
-        // Start moving the bar line right
-        Device.StartTimer(TimeSpan.FromMilliseconds(2), () =>
+        
+        if (isPlaying)
         {
-            if (isPlaying)
+            flameBurnSound.Volume = soundVolume*0.1;
+            flameBurnSound.Play();
+            // Start moving the bar line right
+            Device.StartTimer(TimeSpan.FromMilliseconds(2), () =>
             {
-                if (isIncreasingPower)
-                {
-                    MoveBarLineRight();
-                    return true; 
-                }
-                else
-                {
-                    return false; 
-                }
-            }
-            else
-            {
-                return true;
-            }
             
-        });
+                    if (isIncreasingPower)
+                    {
+                        MoveBarLineRight();
+                        return true; 
+                    }
+                    else
+                    {
+                        return false; 
+                    }
+            
+            
+            });
+        }
     }
     private void OnIncreasePowerButtonReleased(object sender, EventArgs e)
     {
+        flameBurnSound.Stop();
         isIncreasingPower = false;
         BarLineResistance();
     }
     private void End()
     {
+        increaseButton.Text = "Koniec";
+        flameOnSound.Stop();
+        flameOnSound.Volume = soundVolume;
+        flameOnSound.Play();
         isPlaying = false;
     } 
     

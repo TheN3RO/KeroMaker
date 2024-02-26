@@ -29,10 +29,18 @@ public partial class SettingsPage : ContentPage
                     newMusic = newMusic / 100;
                     mainPage.VolumeMusic = newMusic * volume;
                 }
+                else if (e.PropertyName == "Sound")
+                {
+                    double newSound = viewModel.Sound;
+                    double volume = viewModel.Volume;
+                    volume = volume / 100;
+                    newSound = newSound / 100;
+                    mainPage.VolumeMusic = newSound * volume;
+                }
             };
         }
     }
-
+    
     private void LeftButton_Cliked(object sender, EventArgs e)
     {
         Navigation.PopAsync();

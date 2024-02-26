@@ -82,7 +82,11 @@
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Raw\flame_burn.wav" />
+	  <None Remove="Resources\Raw\flame_off.wav" />
+	  <None Remove="Resources\Raw\flame_on.wav" />
 	  <None Remove="Resources\Raw\flying_chicks-1.wav" />
+	  <None Remove="Resources\Raw\gas-burner-mono.mp3" />
 	  <None Remove="Resources\Raw\honey_trees.mp3" />
 	  <None Remove="Resources\Raw\tall_grass.wav" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
