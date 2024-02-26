@@ -1,6 +1,7 @@
 using CommunityToolkit.Maui.Views;
 using Microsoft.Maui.Layouts;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 
 
@@ -26,7 +27,7 @@ public partial class IngredientPage : ContentPage
     Mixture playerMixture = GameData.Instance.Mixture;
     MainPage mainPage;
 
-    TimeCounter timewatch = GameData.Instance.Timewatch;
+    private TimeCounter timewatch = GameData.Instance.Timewatch;
 
     public IngredientPage(List<Ingredient> ingredients, MainPage mainPage)
     {
@@ -35,6 +36,7 @@ public partial class IngredientPage : ContentPage
 
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
+        FreeSlotsLabel.Text = $"Sloty {playerMixture.mixtureComp.Count}/4";
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
@@ -110,6 +112,7 @@ public partial class IngredientPage : ContentPage
                                               // Dodanie dropGestureRecognizer do GestureRecognizers obszaru upuszczania.
         DropZone.GestureRecognizers.Add(dropGestureRecognizer);
     }
+
     private void OnDragStarting(object sender, DragStartingEventArgs e)
     {
         var dragGestureRecognizer = (DragGestureRecognizer)sender;
@@ -163,11 +166,5 @@ public partial class IngredientPage : ContentPage
     private async void ShowPopupButton_Clicked(object sender, EventArgs e)
     {
         await this.ShowPopupAsync(new HintPopupPage());
-    }
-
-    private void RangeSlider_ValueChanged(object sender, ValueChangedEventArgs e)
-    {
-        // Handle the value change here
-        double newValue = e.NewValue;
     }
 }

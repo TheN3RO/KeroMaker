@@ -12,11 +12,11 @@ namespace KeroMaker
     public class TimeCounter : INotifyPropertyChanged
     {
         private Stopwatch stopwatch = new Stopwatch();
-        private string elapsedTime = "00:00";
         private bool isCounting;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        private string elapsedTime = "00:00";
         public string ElapsedTime
         {
             get { return elapsedTime; }
