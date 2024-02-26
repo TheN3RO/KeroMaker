@@ -18,6 +18,8 @@ namespace KeroMaker
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
+        public int CollectionCount { get; set; }
+
         private Image image = new();
 
         public Image Image
@@ -34,6 +36,23 @@ namespace KeroMaker
         {
             get { return color; }
             set { color = value; }
+        }
+
+        public Mixture()
+        {
+            mixtureComp.CollectionChanged += ingredientCollectionChanged;
+        }
+
+        private void ingredientCollectionChanged(object? sender, NotifyCollectionChangedEventArgs e)
+        {
+            // Check if items were added or removed from the collection
+            if (e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Add ||
+                e.Action == System.Collections.Specialized.NotifyCollectionChangedAction.Remove)
+            {
+                // Update FreeSlotsLabel.Text with the count of items in the collection
+                CollectionCount = mixtureComp.Count;
+                OnPropertyChanged("CollectionCount");
+            }
         }
 
         public void addIngredient(Ingredient ingredient)

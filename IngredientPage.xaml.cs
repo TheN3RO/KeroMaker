@@ -36,7 +36,8 @@ public partial class IngredientPage : ContentPage
 
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
-        FreeSlotsLabel.Text = $"Sloty {playerMixture.mixtureComp.Count}/4";
+        FreeSlotsLabel.Text = $"Sloty {playerMixture.CollectionCount}/4";
+
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
