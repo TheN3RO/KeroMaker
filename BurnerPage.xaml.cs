@@ -1,7 +1,7 @@
 
 using CommunityToolkit.Maui.Views;
 using System.Reflection.Metadata.Ecma335;
-
+using KeroMaker.PopUps;
 namespace KeroMaker;
 
 public partial class BurnerPage : ContentPage
@@ -234,13 +234,33 @@ public partial class BurnerPage : ContentPage
         isIncreasingPower = false;
         BarLineResistance();
     }
-    private void End()
+    private async void End()
     {
         increaseButton.Text = "Koniec";
         flameOnSound.Stop();
         flameOnSound.Volume = soundVolume;
         flameOnSound.Play();
         isPlaying = false;
+        timewatch.PauseTimer();
+        if (isWon) {
+            var popup = new BurnerWinPopUp();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is null)
+            {
+                await Navigation.PopAsync();
+                timewatch.StartDispatcherTimer();
+            }
+        }
+        else
+        {
+            var popup = new BurnerLosePopUp();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is null)
+            {
+                await Navigation.PopAsync();
+                timewatch.StartDispatcherTimer();
+            }
+        }
     } 
     
     private void ImageLeftButton_Clicked(object sender, EventArgs e)

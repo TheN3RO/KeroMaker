@@ -35,7 +35,6 @@ public partial class SettingsPage : ContentPage
                     double volume = viewModel.Volume;
                     volume = volume / 100;
                     newSound = newSound / 100;
-                    mainPage.VolumeMusic = newSound * volume;
                 }
             };
         }
