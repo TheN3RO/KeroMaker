@@ -246,6 +246,12 @@ public partial class BurnerPage : ContentPage
 
     private async void ShowPopupButton_Clicked(object sender, EventArgs e)
     {
-        await this.ShowPopupAsync(new HintPopupPage());
+        var popup = new HintPopupPage();
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is null)
+        {
+            timewatch.StartDispatcherTimer();
+        }
     }
 }

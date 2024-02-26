@@ -75,9 +75,15 @@ public partial class GamePage : ContentPage
     {
         Navigation.PushAsync(new IngredientPage(ingredients,mainPage));
     }
-    private void ImageButtonHint_Clicked(object sender, EventArgs e)
+    private async void ImageButtonHint_Clicked(object sender, EventArgs e)
     {
-        //TODO: System podpowiedzi
+        var popup = new HintPopupPage();
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is null)
+        {
+            timewatch.StartDispatcherTimer();
+        }
     }
     private void ImageDestylator1_Tapped()
     {

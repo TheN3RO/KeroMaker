@@ -9,4 +9,8 @@ public partial class HintPopupPage : Popup
 	{
 		InitializeComponent();
 	}
+	private void ButtonOk_Clicked(object sender, EventArgs e)
+	{
+		Close();
+	}
 }
