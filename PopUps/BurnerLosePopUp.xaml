@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="KeroMaker.PopUps.BurnerLosePopUp"
+             Color="Transparent"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+    <Border x:Name="borderPage"
+        Stroke="#03045e"
+        StrokeThickness="4"
+        Background="#023e8a"
+        Padding="16,8"
+        HorizontalOptions="Center">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="40,40,40,40" />
+        </Border.StrokeShape>
+
+        <Grid x:Name="gridPage" WidthRequest="300" BackgroundColor="#023e8a" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="headerLabel" FontSize="44" HorizontalOptions="Center" Text="Porażka"  FontFamily="logo_start.ttf"></Label>
+            <Label x:Name="paragrafLabel" Grid.Row="1"  HorizontalOptions="Center" FontSize="30"  Text="Złamałeś palnik!"></Label>
+            <Button x:Name="buttonPage"  Grid.Row="2" Text="OK" HorizontalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#03045e"></Button>
+        </Grid>
+
+    </Border>
+</mct:Popup>

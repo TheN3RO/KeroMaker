@@ -121,6 +121,12 @@
 	  <MauiXaml Update="HelpPageModels\AboutUs.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\BurnerLosePopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\BurnerWinPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -162,6 +168,9 @@
 	<ItemGroup>
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\BurnerWinPopUp.xaml.cs">
+	    <DependentUpon>BurnerWinPopUp.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
