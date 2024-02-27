@@ -2,6 +2,7 @@ using CommunityToolkit.Maui.Views;
 using System.Diagnostics;
 using CommunityToolkit.Maui.Views;
 using MauiToolkitPopupSample.PopUps;
+using KeroMaker.PopUps;
 
 namespace KeroMaker;
 
@@ -129,7 +130,19 @@ public partial class GamePage : ContentPage
     }
     private void ImageDestylator2_Clicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new IngredientPage(ingredients,mainPage,this));
+        if (gamePhase == 0)
+        {
+            Navigation.PushAsync(new IngredientPage(ingredients,mainPage,this));
+        }
+        
+    }
+    private void ImageDestylator3_Clicked(object sender, EventArgs e)
+    {
+        if (gamePhase == 2)
+        {
+            GamePhase = 3;
+        }
+
     }
     private async void ImageButtonHint_Clicked(object sender, EventArgs e)
     {
@@ -141,9 +154,16 @@ public partial class GamePage : ContentPage
             timewatch.StartDispatcherTimer();
         }
     }
-    private void Win()
+    private async void Win()
     {
         string time = timewatch.ElapsedTime;
+        var popup = new GameWinPopUp(time);
+        timewatch.PauseTimer();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is null)
+        {
+            await Navigation.PopAsync();
+        }
     }
     private void ImageDestylator1_Tapped()
     {

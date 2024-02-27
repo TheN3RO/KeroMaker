@@ -3,7 +3,7 @@ using Microsoft.Maui.Layouts;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
-
+using KeroMaker.PopUps;
 
 namespace KeroMaker;
 
@@ -45,6 +45,7 @@ public partial class IngredientPage : ContentPage
         mixtureImage.Margin = new Thickness(0, 0, 0, -50);
         mixtureImage.WidthRequest = 470;
         mixtureImage.HeightRequest = 470;
+        playerMixture.Image.Source = "mixture_bottle.svg";
 
         AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         AbsoluteLayout.SetLayoutFlags(mixtureImage, AbsoluteLayoutFlags.PositionProportional);
@@ -143,9 +144,7 @@ public partial class IngredientPage : ContentPage
             playerMixture.addIngredient(ingredient);
 
             playerMixture.Image.Source = "mixture_in_bottle.svg";
-
-            gamePage.GamePhase = 1;
-
+            Win();
             Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
         }
     }
@@ -156,6 +155,17 @@ public partial class IngredientPage : ContentPage
         timewatch.StartDispatcherTimer();
     }
 
+    private async void Win()
+    {
+        gamePage.GamePhase = 1;
+        var popup = new IngredientsWinPopUp();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is null)
+        {
+            await Navigation.PopAsync();
+            timewatch.StartDispatcherTimer();
+        }
+    }
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();
