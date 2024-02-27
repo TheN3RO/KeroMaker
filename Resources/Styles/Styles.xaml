@@ -26,7 +26,7 @@
     <Style TargetType="Button">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource Gray500}, Dark={StaticResource Gray500}}" />
-        <Setter Property="FontFamily" Value="main.ttf"/>
+        <Setter Property="FontFamily" Value="main2.ttf"/>
         <Setter Property="FontSize" Value="24"/>
         <Setter Property="CornerRadius" Value="10"/>
         <Setter Property="Padding" Value="14,10"/>
@@ -161,7 +161,7 @@
     <Style TargetType="Label">
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource White}, Dark={StaticResource White}}" />
         <Setter Property="BackgroundColor" Value="Transparent" />
-        <Setter Property="FontFamily" Value="main" />
+        <Setter Property="FontFamily" Value="main2" />
         <Setter Property="FontSize" Value="14" />
         <Setter Property="VisualStateManager.VisualStateGroups">
             <VisualStateGroupList>
