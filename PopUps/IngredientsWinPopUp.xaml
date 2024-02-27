@@ -5,6 +5,7 @@
              x:Class="KeroMaker.PopUps.IngredientsWinPopUp"
              Color="Transparent"
              CanBeDismissedByTappingOutsideOfPopup="False">     
+    
     <Border x:Name="borderPage"
         Stroke="#59d102"
         StrokeThickness="4"

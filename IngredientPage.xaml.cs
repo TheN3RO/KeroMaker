@@ -36,8 +36,6 @@ public partial class IngredientPage : ContentPage
         this.gamePage = gamePage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
-        FreeSlotsLabel.Text = $"Sloty {playerMixture.CollectionCount}/4";
-
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
@@ -45,7 +43,14 @@ public partial class IngredientPage : ContentPage
         mixtureImage.Margin = new Thickness(0, 0, 0, -50);
         mixtureImage.WidthRequest = 470;
         mixtureImage.HeightRequest = 470;
-        playerMixture.Image.Source = "mixture_bottle.svg";
+        if (gamePage.GamePhase == 0)
+        {
+            playerMixture.Image.Source = "mixture_bottle.svg";
+        }
+        else if (gamePage.GamePhase == 3)
+        {
+            playerMixture.Image.Source = "kerosene_in_bottle.svg";
+        }
 
         AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         AbsoluteLayout.SetLayoutFlags(mixtureImage, AbsoluteLayoutFlags.PositionProportional);
@@ -141,11 +146,19 @@ public partial class IngredientPage : ContentPage
             var draggedFrame = (Image)e.Data.Properties["Image"];
             var ingredient = (Ingredient)draggedFrame.BindingContext;
 
-            playerMixture.addIngredient(ingredient);
+            if (gamePage.GamePhase == 0 && ingredient.Name == "Ropa") 
+            {
+                playerMixture.addIngredient(ingredient);
 
-            playerMixture.Image.Source = "mixture_in_bottle.svg";
-            Win();
-            Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
+                playerMixture.Image.Source = "mixture_in_bottle.svg";
+                Win();
+            } else if (gamePage.GamePhase == 3 && ingredient.Name == "H2SO4")
+            {
+                playerMixture.addIngredient(ingredient);
+
+                playerMixture.Image.Source = "refined_kerosene_in_bottle.svg";
+                Win();
+            }
         }
     }
 
@@ -157,15 +170,23 @@ public partial class IngredientPage : ContentPage
 
     private async void Win()
     {
-        gamePage.GamePhase = 1;
-        var popup = new IngredientsWinPopUp();
-        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
-        if (result is null)
+        if (gamePage.GamePhase == 0)
         {
+            gamePage.GamePhase = 1;
+            var popup = new IngredientsWinPopUp();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is null)
+            {
+                await Navigation.PopAsync();
+                timewatch.StartDispatcherTimer();
+            }
+        } else if (gamePage.GamePhase == 3) 
+        { 
+            gamePage.GamePhase = 4;
             await Navigation.PopAsync();
-            timewatch.StartDispatcherTimer();
         }
     }
+
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();

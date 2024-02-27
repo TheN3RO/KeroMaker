@@ -122,8 +122,6 @@ public partial class BurnerPage : ContentPage
         });
     }
 
-    
-
     private void DecreaseTemperature(double cold)
     {
         if (temperature > 20)

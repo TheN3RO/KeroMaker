@@ -37,13 +37,21 @@ public partial class GamePage : ContentPage
                     break;
                 case 2:
                     gamePhase = value;
-                    ChangeOilBottlePhase(0);
+                    ChangeOilBottlePhase(1);
                     ChangeKeroseneBottlePhase(1);
                     break;
                 case 3:
                     gamePhase = value;
+                    ChangeOilBottlePhase(1);
+                    ChangeKeroseneBottlePhase(1);
+                    break;
+                case 4:
+                    gamePhase = value;
                     Win();
                     break;
+                default:
+                    break;
+
             }
         }
     }
@@ -114,6 +122,11 @@ public partial class GamePage : ContentPage
             currentKeroseneBottlePhase = 1;
             imageDestylator3Part.Source = "destylator_3_part_filled.png";
         }
+        else if (phase == 2)
+        {
+            currentKeroseneBottlePhase = 2;
+            imageDestylator3Part.Source = "destylator_3_part_refined.png";
+        }
     }
     //Wydarzenia klikniêcia obiektów
     private void ImageButtonSettings_Clicked(object sender, EventArgs e)
@@ -141,6 +154,9 @@ public partial class GamePage : ContentPage
         if (gamePhase == 2)
         {
             GamePhase = 3;
+        } else if (gamePhase == 3)
+        {
+            Navigation.PushAsync(new IngredientPage(ingredients, mainPage, this));
         }
 
     }
@@ -157,8 +173,8 @@ public partial class GamePage : ContentPage
     private async void Win()
     {
         string time = timewatch.ElapsedTime;
-        var popup = new GameWinPopUp(time);
         timewatch.PauseTimer();
+        var popup = new GameWinPopUp(time);
         var result = await Application.Current.MainPage.ShowPopupAsync(popup);
         if (result is null)
         {

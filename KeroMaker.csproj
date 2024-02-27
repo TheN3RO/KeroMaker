@@ -67,10 +67,12 @@
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
+	  <None Remove="Resources\Images\Ingredients\kerosene_in_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
 	  <None Remove="Resources\Images\Ingredients\potion.svg" />
+	  <None Remove="Resources\Images\Ingredients\refined_kerosene_in_bottle.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
 	  <None Remove="Resources\Images\play_circle_outline.svg" />
 	  <None Remove="Resources\Images\school_outline.svg" />
@@ -81,6 +83,7 @@
 	  <None Remove="Resources\Images\Settings\volume.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
 	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
@@ -136,6 +139,9 @@
 	  <MauiXaml Update="PopUps\GameWinPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\IngredientsKeroseneWinPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PopUps\IngredientsWinPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -152,7 +158,9 @@
 	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\refined_kerosene_in_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
+	  <MauiImage Include="Resources\Images\Ingredients\kerosene_in_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\potion.svg" />
@@ -163,6 +171,7 @@
 	  <MauiImage Include="Resources\Images\Settings\sound.png" />
 	  <MauiImage Include="Resources\Images\Settings\volume.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator_1_part.svg" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part.svg" />

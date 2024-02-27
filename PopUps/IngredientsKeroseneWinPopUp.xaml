@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+            x:Class="KeroMaker.PopUps.IngredientsKeroseneWinPopUp"
+           Color="Transparent"
+           CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Border x:Name="borderPage"
+            Stroke="#59d102"
+            StrokeThickness="4"
+            Background="#73d707"
+            Padding="16,8"
+            HorizontalOptions="Center">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="40,40,40,40" />
+        </Border.StrokeShape>
+
+        <Grid x:Name="gridPage" WidthRequest="300" BackgroundColor="#73d707" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="60"/>
+            </Grid.RowDefinitions>
+            <Label x:Name="headerLabel" FontSize="44" HorizontalOptions="Center" Text="Sukces"  FontFamily="logo_start.ttf"></Label>
+            <Label x:Name="paragrafLabel" Grid.Row="1"  HorizontalOptions="Center" FontSize="14"  Text="Dodałeś potrzebne składniki do kolby" Margin="10"></Label>
+            <Button x:Name="buttonPage"  Grid.Row="2" Text="OK" HorizontalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#59d102"></Button>
+        </Grid>
+
+    </Border>
+</mct:Popup>
