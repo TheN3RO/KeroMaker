@@ -36,11 +36,6 @@
         <StackLayout Grid.Row="3" x:Name="items" />
 
         <AbsoluteLayout Grid.Row="3">
-            <Label  Grid.Row="3"
-                    AbsoluteLayout.LayoutBounds="0, 0.5"
-                    AbsoluteLayout.LayoutFlags="PositionProportional"
-                    x:Name="FreeSlotsLabel"
-                    Text="Sloty: 0/4"/>
             <Frame AbsoluteLayout.LayoutBounds="1, 1"
                    AbsoluteLayout.LayoutFlags="PositionProportional"
                    Margin="10"

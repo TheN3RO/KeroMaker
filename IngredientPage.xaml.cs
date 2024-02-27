@@ -49,7 +49,7 @@ public partial class IngredientPage : ContentPage
         }
         else if (gamePage.GamePhase == 3)
         {
-            playerMixture.Image.Source = "kerosene_in_bottle.svg";
+            playerMixture.Image.Source = "mixture_in_bottle.svg";
         }
 
         AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
@@ -71,7 +71,7 @@ public partial class IngredientPage : ContentPage
                 {
                     BackgroundColor = new Color(0, 0, 0, 128),
                     CornerRadius = 10,
-                    WidthRequest = 100,
+                    WidthRequest = 120,
                     Margin = 3,
                 };
 
