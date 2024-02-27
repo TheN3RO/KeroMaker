@@ -31,8 +31,7 @@
                          Clicked="ImageButtonSettings_Clicked"/>
         </StackLayout>
 
-        <AbsoluteLayout Grid.Row="2"
-                        x:Name="DropZone">
+        <AbsoluteLayout Grid.Row="2" x:Name="DropZone">
         </AbsoluteLayout>
         <StackLayout Grid.Row="3" x:Name="items" />
 

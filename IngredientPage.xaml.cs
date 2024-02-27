@@ -26,14 +26,14 @@ public partial class IngredientPage : ContentPage
     //Tworzenie obiektu globalnego modyfikowalnego przez gracza
     Mixture playerMixture = GameData.Instance.Mixture;
     MainPage mainPage;
-
+    GamePage gamePage;
     private TimeCounter timewatch = GameData.Instance.Timewatch;
 
-    public IngredientPage(List<Ingredient> ingredients, MainPage mainPage)
+    public IngredientPage(List<Ingredient> ingredients, MainPage mainPage, GamePage gamePage)
     {
-        this.mainPage = mainPage;
         InitializeComponent();
-
+        this.mainPage = mainPage;
+        this.gamePage = gamePage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
         FreeSlotsLabel.Text = $"Sloty {playerMixture.CollectionCount}/4";
@@ -143,6 +143,8 @@ public partial class IngredientPage : ContentPage
             playerMixture.addIngredient(ingredient);
 
             playerMixture.Image.Source = "mixture_in_bottle.svg";
+
+            gamePage.GamePhase = 1;
 
             Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
         }

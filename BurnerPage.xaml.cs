@@ -15,11 +15,14 @@ public partial class BurnerPage : ContentPage
     private double temperature;
 
     MainPage mainPage;
+    GamePage gamePage;
     double soundVolume=1;
-    public BurnerPage(MainPage mainPage)
+    public BurnerPage(MainPage mainPage, GamePage gamePage)
     {
+       
+        InitializeComponent(); 
         this.mainPage = mainPage;
-        InitializeComponent();
+        this.gamePage = gamePage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
 
@@ -244,6 +247,7 @@ public partial class BurnerPage : ContentPage
         timewatch.PauseTimer();
         if (isWon) {
             var popup = new BurnerWinPopUp();
+            gamePage.GamePhase = 2;
             var result = await Application.Current.MainPage.ShowPopupAsync(popup);
             if (result is null)
             {

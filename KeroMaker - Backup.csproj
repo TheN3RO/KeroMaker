@@ -78,8 +78,6 @@
 	  <None Remove="Resources\Images\Settings\pause.svg" />
 	  <None Remove="Resources\Images\Settings\sound.png" />
 	  <None Remove="Resources\Images\Settings\volume.png" />
-	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
-	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
 	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
@@ -126,6 +124,9 @@
 	  <MauiXaml Update="PopUps\BurnerLosePopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\BurnerWinPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -155,20 +156,21 @@
 	  <MauiImage Include="Resources\Images\Settings\pause.svg" />
 	  <MauiImage Include="Resources\Images\Settings\sound.png" />
 	  <MauiImage Include="Resources\Images\Settings\volume.png" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator_1_part.svg" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator_1_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator_3_part.svg" />
 	  <MauiImage Include="Resources\Images\Tools\lamp.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator_2_part.svg" />
 	</ItemGroup>
 	
 	<ItemGroup>
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\BurnerWinPopUp.xaml.cs">
+	    <DependentUpon>BurnerWinPopUp.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
