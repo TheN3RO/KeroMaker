@@ -23,7 +23,7 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Label x:Name="headerLabel" FontSize="44" HorizontalOptions="Center" Text="Zwycięstwo"  FontFamily="logo_start.ttf"></Label>
-            <Label  Grid.Row="1"  HorizontalOptions="Center" FontSize="18"  Text="Zrobiłeś nafte" Margin="10,10,10,5"></Label>
+            <Label  Grid.Row="1"  HorizontalOptions="Center" FontSize="18"  Text="Uzyskałeś naftę" Margin="10,10,10,5"></Label>
             <Label x:Name="timeLabel" Grid.Row="2"  HorizontalOptions="Center" FontSize="18" Text="_" Margin="10,5,10,10"></Label>
             <Button x:Name="buttonPage"  Grid.Row="3" Text="OK" HorizontalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#59d102"></Button>
         </Grid>

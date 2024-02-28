@@ -9,7 +9,7 @@ public partial class GameWinPopUp : Popup
 	{
 		
 		InitializeComponent();
-		timeLabel.Text = "za " + time;
+		timeLabel.Text = "w " + time;
 	}
 	private void ButtonOk_Clicked(object sender, EventArgs e)
 	{	
