@@ -2,7 +2,7 @@
 <mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-             x:Class="KeroMaker.GameHint2"
+             x:Class="KeroMaker.GameHint3"
              Color="Transparent"
              CanBeDismissedByTappingOutsideOfPopup="False">
 
@@ -27,7 +27,7 @@
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Wlej ropę do kolby
+Teraz nagrzej ropę używając palnika
                         </x:String>
                     </Label.Text>
                 </Label>
