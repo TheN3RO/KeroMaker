@@ -36,8 +36,6 @@ public partial class IngredientPage : ContentPage
         this.gamePage = gamePage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
-        FreeSlotsLabel.Text = $"Sloty {playerMixture.CollectionCount}/4";
-
 
         this.Ingredients = new ObservableCollection<Ingredient>(ingredients);
 
@@ -45,10 +43,21 @@ public partial class IngredientPage : ContentPage
         mixtureImage.Margin = new Thickness(0, 0, 0, -50);
         mixtureImage.WidthRequest = 470;
         mixtureImage.HeightRequest = 470;
-        playerMixture.Image.Source = "mixture_bottle.svg";
-
-        AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+        if (gamePage.GamePhase == 0)
+        {
+            playerMixture.Image.Source = "mixture_bottle.svg";
+            AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+        }
+        else if (gamePage.GamePhase == 2)
+        {
+            playerMixture.Image.Source = "big_bottle_not_refined.png";
+            playerMixture.Image.HeightRequest = 215;
+            AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 0.02, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            
+        }
         AbsoluteLayout.SetLayoutFlags(mixtureImage, AbsoluteLayoutFlags.PositionProportional);
+
+        
 
         DropZone.Add(mixtureImage);
 
@@ -66,7 +75,7 @@ public partial class IngredientPage : ContentPage
                 {
                     BackgroundColor = new Color(0, 0, 0, 128),
                     CornerRadius = 10,
-                    WidthRequest = 100,
+                    WidthRequest = 120,
                     Margin = 3,
                 };
 
@@ -100,7 +109,7 @@ public partial class IngredientPage : ContentPage
                 grid.Children.Add(frame);
 
                 Grid.SetRow(frame, 0);
-
+                
                 return new Grid { Children = { frame } };
             })
         };
@@ -113,8 +122,16 @@ public partial class IngredientPage : ContentPage
         dropGestureRecognizer.Drop += OnDrop; // Subskrypcja zdarzenia Drop.
                                               // Dodanie dropGestureRecognizer do GestureRecognizers obszaru upuszczania.
         DropZone.GestureRecognizers.Add(dropGestureRecognizer);
+        if(gamePage.GamePhase == 0){
+            GenerateHint2();
+        }
+        
     }
 
+    async Task PutTaskDelay()
+    {
+        await Task.Delay(500);
+    }
     private void OnDragStarting(object sender, DragStartingEventArgs e)
     {
         var dragGestureRecognizer = (DragGestureRecognizer)sender;
@@ -126,6 +143,26 @@ public partial class IngredientPage : ContentPage
             e.Data.Properties["Image"] = image;
         }
     }
+    private async void GenerateHint2()
+    {
+        if (gamePage.IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint2();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                gamePage.IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                gamePage.IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
+        }
+    }
 
     // Zdarzenie wywo³ywane, kiedy obraz jest przeci¹gany nad obszarem, gdzie mo¿na go upuœciæ.
     private void OnDragOver(object sender, DragEventArgs e)
@@ -134,18 +171,27 @@ public partial class IngredientPage : ContentPage
         e.AcceptedOperation = DataPackageOperation.Copy;
     }
 
-    private void OnDrop(object sender, DropEventArgs e)
+    private async void OnDrop(object sender, DropEventArgs e)
     {
         if (e.Data.Properties.ContainsKey("Image"))
         {
             var draggedFrame = (Image)e.Data.Properties["Image"];
             var ingredient = (Ingredient)draggedFrame.BindingContext;
 
-            playerMixture.addIngredient(ingredient);
+            if (gamePage.GamePhase == 0 && ingredient.Name == "Ropa") 
+            {
+                playerMixture.addIngredient(ingredient);
+                playerMixture.Image.Source = "mixture_in_bottle.svg";
+                await PutTaskDelay();
+                Win();
+            } else if (gamePage.GamePhase == 2 && ingredient.Name == "H2SO4")
+            {
+                playerMixture.addIngredient(ingredient);
 
-            playerMixture.Image.Source = "mixture_in_bottle.svg";
-            Win();
-            Debug.Write($"Dodano sk³adnik. Obecny kolor mikstury: {playerMixture.FinalColor}");
+                playerMixture.Image.Source = "big_bottle_refined.png";
+                await PutTaskDelay();
+                Win();
+            }
         }
     }
 
@@ -157,15 +203,23 @@ public partial class IngredientPage : ContentPage
 
     private async void Win()
     {
-        gamePage.GamePhase = 1;
-        var popup = new IngredientsWinPopUp();
-        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
-        if (result is null)
+        if (gamePage.GamePhase == 0)
         {
+            gamePage.GamePhase = 1;
+            var popup = new IngredientsWinPopUp();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is null)
+            {
+                await Navigation.PopAsync();
+                timewatch.StartDispatcherTimer();
+            }
+        } else if (gamePage.GamePhase == 2) 
+        { 
+            gamePage.GamePhase = 3;
             await Navigation.PopAsync();
-            timewatch.StartDispatcherTimer();
         }
     }
+
     private void ImageLeftButton_Clicked(object sender, EventArgs e)
     {
         Navigation.PopAsync();

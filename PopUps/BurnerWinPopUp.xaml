@@ -22,7 +22,16 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Label x:Name="headerLabel" FontSize="44" HorizontalOptions="Center" Text="Sukces"  FontFamily="logo_start.ttf"></Label>
-            <Label x:Name="paragrafLabel" Grid.Row="1"  HorizontalOptions="Center" FontSize="30"  Text="Podgrzałeś ropę"></Label>
+            <Label x:Name="paragrafLabel" Grid.Row="1"  HorizontalOptions="Center" FontSize="30">
+                
+                <Label.Text>
+                    <x:String>
+Uzyskałeś preparat 
+pozbawiony lekkich 
+frakcji
+                    </x:String>
+                </Label.Text>
+            </Label>
             <Button x:Name="buttonPage"  Grid.Row="2" Text="OK" HorizontalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#ca6702"></Button>
         </Grid>
 

@@ -41,6 +41,15 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000" />
+		<MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
+		<MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
+		<MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part_hint.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled1.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled2.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled3.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled4.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled5.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled6.png" />
 
 		<!-- Splash Screen -->
 		<MauiSplashScreen Include="Resources\Splash\splash_img.svg" Color="#000" BaseSize="128,128" />
@@ -66,6 +75,8 @@
 	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
+	  <None Remove="Resources\Images\Ingredients\big_bottle_not_refined.png" />
+	  <None Remove="Resources\Images\Ingredients\big_bottle_refined.png" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.svg" />
@@ -80,11 +91,28 @@
 	  <None Remove="Resources\Images\Settings\sound.png" />
 	  <None Remove="Resources\Images\Settings\volume.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_1.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_2.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_3.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_4.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_5.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_6.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
+	  <None Remove="Resources\Images\Tools\destylator\palnik\destylator_1_part_hint.png" />
 	  <None Remove="Resources\Images\Tools\destylator_1_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled1.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled2.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled3.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled4.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled5.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_filled6.png" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp_hint.png" />
 	  <None Remove="Resources\Raw\flame_burn.wav" />
 	  <None Remove="Resources\Raw\flame_off.wav" />
 	  <None Remove="Resources\Raw\flame_on.wav" />
@@ -93,6 +121,10 @@
 	  <None Remove="Resources\Raw\honey_trees.mp3" />
 	  <None Remove="Resources\Raw\tall_grass.wav" />
 	  <None Remove="Resources\Splash\splash_img.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Tools\lamp\lamp_hint.png" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -127,6 +159,24 @@
 	  <MauiXaml Update="PopUps\BurnerLosePopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint6.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint5.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint4.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint3.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -134,6 +184,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PopUps\GameWinPopUp.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\IngredientsKeroseneWinPopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="PopUps\IngredientsWinPopUp.xaml">
@@ -151,6 +204,8 @@
 	  <MauiImage Include="Resources\Images\Burner\bar_line.png" />
 	  <MauiImage Include="Resources\Images\Burner\burner_background.png" />
 	  <MauiImage Include="Resources\Images\Burner\horizontal_bar2.png" />
+	  <MauiImage Include="Resources\Images\Ingredients\big_bottle_not_refined.png" />
+	  <MauiImage Include="Resources\Images\Ingredients\big_bottle_refined.png" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.svg" />
@@ -163,10 +218,17 @@
 	  <MauiImage Include="Resources\Images\Settings\sound.png" />
 	  <MauiImage Include="Resources\Images\Settings\volume.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator_1_part.svg" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_1.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_2.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_3.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_4.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_5.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_6.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
+	  <MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part.svg" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part.svg" />
-	  <MauiImage Include="Resources\Images\Tools\lamp.svg" />
+	  <MauiImage Include="Resources\Images\Tools\lamp\lamp.svg" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -177,8 +239,26 @@
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="PopUps\GameHint6.xaml.cs">
+	    <DependentUpon>GameHint6.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint5.xaml.cs">
+	    <DependentUpon>GameHint5.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint4.xaml.cs">
+	    <DependentUpon>GameHint4.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint3.xaml.cs">
+	    <DependentUpon>GameHint3.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint2.xaml.cs">
+	    <DependentUpon>GameHint2.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PopUps\GameWinPopUp.xaml.cs">
 	    <DependentUpon>GameWinPopUp.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint1.xaml.cs">
+	    <DependentUpon>GameHint1.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 

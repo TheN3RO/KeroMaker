@@ -32,6 +32,7 @@ public partial class BurnerPage : ContentPage
         temperature = 20;
         condition = 100;
 
+        GenerateHint4();
     }
     public double VolumeSound
     {
@@ -46,6 +47,30 @@ public partial class BurnerPage : ContentPage
         flameOnSound.Play();
         isPlaying = true;
         increaseButton.Text = "Mocniej!";
+    }
+    async Task PutTaskDelay()
+    {
+        await Task.Delay(500);
+    }
+    private async void GenerateHint4()
+    {
+        if (gamePage.IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint4();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                gamePage.IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                gamePage.IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
+        }
     }
     //15-340
     private void MoveBarLineLeft()
@@ -121,8 +146,6 @@ public partial class BurnerPage : ContentPage
             }
         });
     }
-
-    
 
     private void DecreaseTemperature(double cold)
     {
@@ -247,11 +270,11 @@ public partial class BurnerPage : ContentPage
         timewatch.PauseTimer();
         if (isWon) {
             var popup = new BurnerWinPopUp();
-            gamePage.GamePhase = 2;
             var result = await Application.Current.MainPage.ShowPopupAsync(popup);
             if (result is null)
             {
                 await Navigation.PopAsync();
+                gamePage.GamePhase = 2;
                 timewatch.StartDispatcherTimer();
             }
         }

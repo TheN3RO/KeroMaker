@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
+             x:Class="KeroMaker.GameHint1"
+             Color="Transparent"
+             CanBeDismissedByTappingOutsideOfPopup="False">
+
+    <Border Stroke="#af6e18"
+        StrokeThickness="4"
+        Background="#eb9827"
+        Padding="16,8"
+        HorizontalOptions="Center">
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="40,40,40,40" />
+        </Border.StrokeShape>
+
+        <Grid WidthRequest="300"
+                  BackgroundColor="#eb9827" Padding="5">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="70"/>
+            </Grid.RowDefinitions>
+            <Label FontSize="25" Text="Poradnik" TextColor="#583700" HorizontalOptions="Center" Margin="10"></Label>
+            <ScrollView Grid.Row="1" HeightRequest="300">
+                <Label FontSize="18" TextColor="#583700">
+                    <Label.Text>
+                        <x:String>
+Witaj w grze KeroMaker, gdzie 
+przeniesiesz się w czasie do 
+XIX wieku, by poznać historię 
+Ignacego Łukasiewicza, pioniera 
+przemysłu naftowego. 
+Eksperymentuj, odkrywaj i
+doskonal techniki destylacji, które 
+doprowadziły do wynalezienia lampy 
+naftowej. Wykorzystaj przycisk 
+podpowiedzi na dole ekranu, 
+aby pokonać trudności.
+                        </x:String>
+                    </Label.Text>
+                </Label>
+            </ScrollView>
+            <StackLayout Grid.Row="2" Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="OK" TextColor="#583700" HorizontalOptions="Center" VerticalOptions="Center" Clicked="ButtonOk_Clicked" BackgroundColor="#af6e18"></Button>
+            </StackLayout>
+
+            <StackLayout Grid.Row="2" Orientation="Vertical" HorizontalOptions="End">
+                <Label VerticalOptions="Center" TextColor="#583700" Text="Włącz podpowiedzi" FontSize="12"></Label>
+                <Switch VerticalOptions="Center" x:Name="switchHints" IsToggled="True"/>
+            </StackLayout>
+        </Grid>
+
+    </Border>
+</mct:Popup>

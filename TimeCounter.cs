@@ -26,7 +26,7 @@ namespace KeroMaker
                 OnPropertyChanged("ElapsedTime");
             }
         }
-
+        
         internal void StartDispatcherTimer()
         {
             stopwatch.Start();

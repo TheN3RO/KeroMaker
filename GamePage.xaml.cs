@@ -3,6 +3,8 @@ using System.Diagnostics;
 using CommunityToolkit.Maui.Views;
 using MauiToolkitPopupSample.PopUps;
 using KeroMaker.PopUps;
+using System;
+using System.Reflection;
 
 namespace KeroMaker;
 
@@ -17,7 +19,13 @@ public partial class GamePage : ContentPage
     private int gamePhase;
     private int currentOilBottlePhase;
     private int currentKeroseneBottlePhase;
+    bool isHintsEnabled;
     
+    public bool IsHintsEnabled 
+    {  
+        get { return isHintsEnabled; }
+        set { isHintsEnabled = value; }
+    }
     public int GamePhase
     {
         get { return gamePhase; }
@@ -27,30 +35,54 @@ public partial class GamePage : ContentPage
             {
                 case 0:
                     gamePhase = value;
-                    ChangeOilBottlePhase(0);
+                    ChangeOilBottlePhase(2);
                     ChangeKeroseneBottlePhase(0);
+                    ChangeBurnerPhase(0);
+                    ChangeLampPhase(0);
                     break;
                 case 1:
                     gamePhase = value;
                     ChangeOilBottlePhase(1);
                     ChangeKeroseneBottlePhase(0);
+                    ChangeBurnerPhase(1);
+                    ChangeLampPhase(0);
+
+                    GenerateHint3();
                     break;
                 case 2:
+              
                     gamePhase = value;
                     ChangeOilBottlePhase(0);
-                    ChangeKeroseneBottlePhase(1);
+                    ChangeKeroseneBottlePhase(3);
+                    ChangeBurnerPhase(0);
+                    ChangeLampPhase(0);
+
+                    GenerateHint5();
                     break;
                 case 3:
                     gamePhase = value;
+                    ChangeOilBottlePhase(0);
+                    ChangeKeroseneBottlePhase(2);
+                    ChangeBurnerPhase(0);
+                    ChangeLampPhase(1);
+
+                    GenerateHint6();
+                    break;
+                case 4:
+                    gamePhase = value;
                     Win();
                     break;
+                default:
+                    break;
+
             }
         }
     }
+    
     public GamePage(MainPage mainPage)
     {
-        
         InitializeComponent();
+        
         this.mainPage = mainPage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
@@ -69,11 +101,13 @@ public partial class GamePage : ContentPage
         //Inicjalizowanie sk³adników bazowych
         ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
         ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
-
+        
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
+        imageDestylator3Part.Source = "destylator_3_part.svg";
+        isHintsEnabled = true;
+        GenerateHint1();
         GamePhase = 0;
-        currentKeroseneBottlePhase = 0;
     }
     private async void ImagePauseButton_Clicked(object sender, EventArgs e)
     {
@@ -89,6 +123,24 @@ public partial class GamePage : ContentPage
             timewatch.StartDispatcherTimer();
         }
     }
+    private void ChangeBurnerPhase(int phase)
+    {
+        if(phase == 0)
+        {
+            imageBurner.Source = "destylator_1_part.svg";
+        }
+        else if (phase == 1)
+        {
+            if (isHintsEnabled)
+            {
+                imageBurner.Source = "destylator_1_part_hint.png";
+            }
+            else
+            {
+                imageBurner.Source = "destylator_1_part.svg";
+            }
+        }
+    }
     private void ChangeOilBottlePhase (int phase)
     {
         if(phase == 0)
@@ -101,6 +153,11 @@ public partial class GamePage : ContentPage
             currentOilBottlePhase = 1;
             imageDestylator2Part.Source = "destylator_2_part_filled.png";
         }
+        else if(phase == 2)
+        {
+            currentOilBottlePhase = 2;
+            imageDestylator2Part.Source = "destylator_2_part_hint.png";
+        }
     }
     private void ChangeKeroseneBottlePhase(int phase)
     {
@@ -112,7 +169,42 @@ public partial class GamePage : ContentPage
         else if (phase == 1)
         {
             currentKeroseneBottlePhase = 1;
+            imageDestylator3Part.Source = "destylator_3_part_refined.png";
+        }
+        else if (phase == 2)
+        {
+            currentKeroseneBottlePhase = 2;
             imageDestylator3Part.Source = "destylator_3_part_filled.png";
+        }
+        else if(phase == 3)
+        {
+            currentKeroseneBottlePhase = 3;
+            if (isHintsEnabled)
+            {
+                imageDestylator3Part.Source = "destylator_3_part_hint.png";
+            }
+            else
+            {
+                imageDestylator3Part.Source = "destylator_3_part_refined.png";
+            }
+        }
+    }
+    private void ChangeLampPhase(int phase)
+    {
+        if (phase == 0)
+        {
+            imageLamp.Source = "lamp.svg";
+        }
+        else if (phase == 1)
+        {
+            if (isHintsEnabled)
+            {
+                imageLamp.Source = "lamp_hint.png";
+            }
+            else
+            {
+                imageLamp.Source = "lamp.svg";
+            }
         }
     }
     //Wydarzenia klikniêcia obiektów
@@ -140,8 +232,9 @@ public partial class GamePage : ContentPage
     {
         if (gamePhase == 2)
         {
-            GamePhase = 3;
+            Navigation.PushAsync(new IngredientPage(ingredients, mainPage, this));
         }
+
 
     }
     private async void ImageButtonHint_Clicked(object sender, EventArgs e)
@@ -154,11 +247,134 @@ public partial class GamePage : ContentPage
             timewatch.StartDispatcherTimer();
         }
     }
+    bool isLampClicked = false;
+    private void ImageLamp_Clicked(object sender, EventArgs e)
+    {
+        //Navigation.PushAsync(new IngredientPage(ingredients, mainPage, this));
+        if (gamePhase == 3 && !isLampClicked) 
+        {
+            isLampClicked = true;
+            FinalAnimation();
+        }
+    }
+    
+
+    private void FinalAnimation()
+    {
+        string desylatorSource;
+        string lampSource;
+        int destykatorIndex = 6;
+        int lampIndex = 1;
+        Device.StartTimer(TimeSpan.FromMilliseconds(800), () =>
+        {
+            desylatorSource = "destylator_3_part_filled_" + Convert.ToString(destykatorIndex) + ".png";
+            lampSource = "lamp_filled" + Convert.ToString(destykatorIndex) + ".png";
+
+            imageLamp.Source = lampSource;
+            imageDestylator3Part.Source = desylatorSource;
+
+            destykatorIndex--;
+            lampIndex++;
+
+            if (destykatorIndex == 0)
+            {
+                GamePhase = 4;
+                return false;
+            }
+            else
+            { 
+                return true;
+            }
+            
+        });
+    }
+    private async void GenerateHint1()
+    {
+        await PutTaskDelay();
+        timewatch.PauseTimer();
+        var popup = new GameHint1();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is "onHints")
+        {
+            isHintsEnabled = true;
+            timewatch.StartDispatcherTimer();
+        }
+        else if (result is "offHints")
+        {
+            isHintsEnabled = false;
+            timewatch.StartDispatcherTimer();
+        }
+    }
+    private async void GenerateHint3()
+    {
+        if (IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint3();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
+        }
+    }
+    private async void GenerateHint5()
+    {
+        if (IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint5();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
+        }
+    }
+    private async void GenerateHint6()
+    {
+        if (IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint6();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
+        }
+    }
+    async Task PutTaskDelay()
+    {
+        await Task.Delay(1000);
+    }
     private async void Win()
     {
+        await PutTaskDelay();
         string time = timewatch.ElapsedTime;
-        var popup = new GameWinPopUp(time);
         timewatch.PauseTimer();
+        var popup = new GameWinPopUp(time);
         var result = await Application.Current.MainPage.ShowPopupAsync(popup);
         if (result is null)
         {
