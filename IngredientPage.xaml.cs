@@ -46,14 +46,18 @@ public partial class IngredientPage : ContentPage
         if (gamePage.GamePhase == 0)
         {
             playerMixture.Image.Source = "mixture_bottle.svg";
+            AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         }
         else if (gamePage.GamePhase == 3)
         {
-            playerMixture.Image.Source = "mixture_in_bottle.svg";
+            playerMixture.Image.Source = "big_bottle_not_refined.png";
+            playerMixture.Image.HeightRequest = 215;
+            AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 0.02, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
+            
         }
-
-        AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         AbsoluteLayout.SetLayoutFlags(mixtureImage, AbsoluteLayoutFlags.PositionProportional);
+
+        
 
         DropZone.Add(mixtureImage);
 
@@ -120,6 +124,10 @@ public partial class IngredientPage : ContentPage
         DropZone.GestureRecognizers.Add(dropGestureRecognizer);
     }
 
+    async Task PutTaskDelay()
+    {
+        await Task.Delay(500);
+    }
     private void OnDragStarting(object sender, DragStartingEventArgs e)
     {
         var dragGestureRecognizer = (DragGestureRecognizer)sender;
@@ -139,7 +147,7 @@ public partial class IngredientPage : ContentPage
         e.AcceptedOperation = DataPackageOperation.Copy;
     }
 
-    private void OnDrop(object sender, DropEventArgs e)
+    private async void OnDrop(object sender, DropEventArgs e)
     {
         if (e.Data.Properties.ContainsKey("Image"))
         {
@@ -151,12 +159,14 @@ public partial class IngredientPage : ContentPage
                 playerMixture.addIngredient(ingredient);
 
                 playerMixture.Image.Source = "mixture_in_bottle.svg";
+                await PutTaskDelay();
                 Win();
             } else if (gamePage.GamePhase == 3 && ingredient.Name == "H2SO4")
             {
                 playerMixture.addIngredient(ingredient);
 
-                playerMixture.Image.Source = "refined_kerosene_in_bottle.svg";
+                playerMixture.Image.Source = "big_bottle_refined.png";
+                await PutTaskDelay();
                 Win();
             }
         }

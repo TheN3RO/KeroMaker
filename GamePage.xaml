@@ -50,16 +50,17 @@
 
             <AbsoluteLayout Grid.Column="1" HorizontalOptions="Start">
                 <ImageButton x:Name="imageDestylator3Part"
-                Source="destylator_3_part.svg"
                 HeightRequest="313.3"
                 AbsoluteLayout.LayoutBounds="0, 0, 186.6, 314"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="ImageDestylator3_Clicked"/>
-                <ImageButton Source="lamp.svg"
+                <ImageButton x:Name="imageLamp"
+                Source="lamp.svg"
                 WidthRequest="100"
                 HeightRequest="170"
                 AbsoluteLayout.LayoutBounds="0, 0, 360, 50"
-                AbsoluteLayout.LayoutFlags="PositionProportional"/>
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+                Clicked="ImageLamp_Clicked"/>
             </AbsoluteLayout>
         </Grid>
 
