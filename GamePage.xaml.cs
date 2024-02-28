@@ -19,7 +19,13 @@ public partial class GamePage : ContentPage
     private int gamePhase;
     private int currentOilBottlePhase;
     private int currentKeroseneBottlePhase;
+    bool isHintsEnabled;
     
+    public bool IsHintsEnabled 
+    {  
+        get { return isHintsEnabled; }
+        set { isHintsEnabled = value; }
+    }
     public int GamePhase
     {
         get { return gamePhase; }
@@ -65,8 +71,8 @@ public partial class GamePage : ContentPage
     
     public GamePage(MainPage mainPage)
     {
-        
         InitializeComponent();
+        
         this.mainPage = mainPage;
         // Inicjowanie licznika czasu gry
         BindingContext = timewatch;
@@ -85,12 +91,13 @@ public partial class GamePage : ContentPage
         //Inicjalizowanie sk³adników bazowych
         ingredients.Add(new Ingredient("Ropa", new Color(18, 6, 1), "oil_container"));
         ingredients.Add(new Ingredient("H2SO4", new Color(69, 12, 112), "potion"));
-
+        
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
         imageDestylator3Part.Source = "destylator_3_part.svg";
+        isHintsEnabled = true;
+        GenerateHint1();
         GamePhase = 0;
-        currentKeroseneBottlePhase = 0;
     }
     private async void ImagePauseButton_Clicked(object sender, EventArgs e)
     {
@@ -221,9 +228,26 @@ public partial class GamePage : ContentPage
             
         });
     }
+    private async void GenerateHint1()
+    {
+        await PutTaskDelay();
+        timewatch.PauseTimer();
+        var popup = new GameHint1();
+        var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+        if (result is "onHints")
+        {
+            isHintsEnabled = true;
+            timewatch.StartDispatcherTimer();
+        }
+        else if (result is "offHints")
+        {
+            isHintsEnabled = false;
+            timewatch.StartDispatcherTimer();
+        }
+    }
     async Task PutTaskDelay()
     {
-        await Task.Delay(2000);
+        await Task.Delay(1000);
     }
     private async void Win()
     {

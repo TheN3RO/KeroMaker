@@ -109,7 +109,7 @@ public partial class IngredientPage : ContentPage
                 grid.Children.Add(frame);
 
                 Grid.SetRow(frame, 0);
-
+                
                 return new Grid { Children = { frame } };
             })
         };
@@ -122,6 +122,7 @@ public partial class IngredientPage : ContentPage
         dropGestureRecognizer.Drop += OnDrop; // Subskrypcja zdarzenia Drop.
                                               // Dodanie dropGestureRecognizer do GestureRecognizers obszaru upuszczania.
         DropZone.GestureRecognizers.Add(dropGestureRecognizer);
+        GenerateHint2();
     }
 
     async Task PutTaskDelay()
@@ -137,6 +138,26 @@ public partial class IngredientPage : ContentPage
         if (image != null)
         {
             e.Data.Properties["Image"] = image;
+        }
+    }
+    private async void GenerateHint2()
+    {
+        if (gamePage.IsHintsEnabled)
+        {
+            await PutTaskDelay();
+            timewatch.PauseTimer();
+            var popup = new GameHint2();
+            var result = await Application.Current.MainPage.ShowPopupAsync(popup);
+            if (result is "onHints")
+            {
+                gamePage.IsHintsEnabled = true;
+                timewatch.StartDispatcherTimer();
+            }
+            else if (result is "offHints")
+            {
+                gamePage.IsHintsEnabled = false;
+                timewatch.StartDispatcherTimer();
+            }
         }
     }
 

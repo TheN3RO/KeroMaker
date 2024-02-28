@@ -148,6 +148,12 @@
 	  <MauiXaml Update="PopUps\BurnerLosePopUp.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint2.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="PopUps\GameHint1.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="PopUps\HintPopupPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -210,8 +216,14 @@
 	  <Compile Update="IngredientPage.xaml.cs">
 	    <DependentUpon>IngredientPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="PopUps\GameHint2.xaml.cs">
+	    <DependentUpon>GameHint2.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="PopUps\GameWinPopUp.xaml.cs">
 	    <DependentUpon>GameWinPopUp.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="PopUps\GameHint1.xaml.cs">
+	    <DependentUpon>GameHint1.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
