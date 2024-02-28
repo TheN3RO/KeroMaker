@@ -27,18 +27,17 @@
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Masz nagrzeć ropę do 
-temperatury 250 °C aby
-przeprowadzić proces 
-destylacji ropy.                        
-Naciskaj na przycisk "Mocniej"
-aby zwiększyć moc ognia.
-Uważaj że po przekroczeniu 
-środka linii zmniejsza się
-stan palnika. Jeżeli stan
-będzie 0% to palnik się
-połamie i trzeba będzie
-zacinać od nowa.                         
+Podgrzej ropę do temperatury 250°C, 
+aby rozpocząć proces destylacji.
+Aby zwiększyć intensywność ognia, 
+naciśnij przycisk "Mocniej". 
+Pamiętaj, że po przekroczenie  
+granicy bezpieczeństwa stan 
+palnika się pogarsza. Jeśli   
+wartość spadnie do 0%, to    
+palnik ulegnie uszkodzeniu i  
+konieczne będzie rozpoczęcie 
+od nowa.
                         </x:String>
                     </Label.Text>
                 </Label>

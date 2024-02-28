@@ -25,7 +25,7 @@
         <Grid Grid.Row="1" BackgroundColor="{StaticResource BlackNight}">
             <StackLayout>
                 <Label Margin="10" FontSize="Large" 
-                   Text='Witaj w KeroMaker, grze stworzonej przez Roberta Osiewicza i Maksyma Tiupę z Zespołu Szkół "Elektrk" im. Noblistów Polskich w Słupsku. Jesteśmy młodym zespołem zafascynowanym nauką chemiczną i technologią, inspirującym się historią Ignacego Łukasiewicza.' />
+                   Text='Witaj w KeroMaker, grze stworzonej przez Roberta Osiewicza, Maksyma Tiupę i Wojciecha Wiśniewskiego z Zespołu Szkół "Elektrk" im. Noblistów Polskich w Słupsku. Jesteśmy młodym zespołem zafascynowanym nauką chemiczną i technologią, inspirującym się historią Ignacego Łukasiewicza.' />
                 <Label Margin="10" FontSize="Large" 
                    Text='Robert i Maksym, uczniowie "Elektryka", przenieśli tę fascynującą historię do świata gier, tworząc KeroMaker - grę, która nie tylko bawi, ale też edukuje. Projekt powstaje na potrzeby konkursu, ale dla nas to także okazja do dzielenia się pasją z graczami z całego świata.'/>
                 <Label Margin="10" FontSize="Large" 
