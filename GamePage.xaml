@@ -43,7 +43,8 @@
                  Source="destylator_2_part.svg" 
                  HeightRequest="196.6" 
                  Clicked="ImageDestylator2_Clicked"/>
-                <ImageButton Source="destylator_1_part.svg"
+                <ImageButton x:Name="imageBurner"
+                 Source="destylator_1_part.svg"
                  HeightRequest="116.6"
                  Clicked="ImageBurner_Clicked"/>
             </StackLayout>

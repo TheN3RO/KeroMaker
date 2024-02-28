@@ -48,7 +48,7 @@ public partial class IngredientPage : ContentPage
             playerMixture.Image.Source = "mixture_bottle.svg";
             AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         }
-        else if (gamePage.GamePhase == 3)
+        else if (gamePage.GamePhase == 2)
         {
             playerMixture.Image.Source = "big_bottle_not_refined.png";
             playerMixture.Image.HeightRequest = 215;
@@ -122,7 +122,10 @@ public partial class IngredientPage : ContentPage
         dropGestureRecognizer.Drop += OnDrop; // Subskrypcja zdarzenia Drop.
                                               // Dodanie dropGestureRecognizer do GestureRecognizers obszaru upuszczania.
         DropZone.GestureRecognizers.Add(dropGestureRecognizer);
-        GenerateHint2();
+        if(gamePage.GamePhase == 0){
+            GenerateHint2();
+        }
+        
     }
 
     async Task PutTaskDelay()
@@ -178,11 +181,10 @@ public partial class IngredientPage : ContentPage
             if (gamePage.GamePhase == 0 && ingredient.Name == "Ropa") 
             {
                 playerMixture.addIngredient(ingredient);
-
                 playerMixture.Image.Source = "mixture_in_bottle.svg";
                 await PutTaskDelay();
                 Win();
-            } else if (gamePage.GamePhase == 3 && ingredient.Name == "H2SO4")
+            } else if (gamePage.GamePhase == 2 && ingredient.Name == "H2SO4")
             {
                 playerMixture.addIngredient(ingredient);
 
@@ -211,9 +213,9 @@ public partial class IngredientPage : ContentPage
                 await Navigation.PopAsync();
                 timewatch.StartDispatcherTimer();
             }
-        } else if (gamePage.GamePhase == 3) 
+        } else if (gamePage.GamePhase == 2) 
         { 
-            gamePage.GamePhase = 4;
+            gamePage.GamePhase = 3;
             await Navigation.PopAsync();
         }
     }

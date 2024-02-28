@@ -2,7 +2,7 @@
 <mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-             x:Class="KeroMaker.GameHint2"
+             x:Class="KeroMaker.GameHint4"
              Color="Transparent"
              CanBeDismissedByTappingOutsideOfPopup="False">
 
@@ -23,11 +23,22 @@
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Label FontSize="25" Text="Poradnik" TextColor="#583700" HorizontalOptions="Center" Margin="10"></Label>
-            <ScrollView Grid.Row="1" HeightRequest="50">
+            <ScrollView Grid.Row="1" HeightRequest="300">
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Wlej ropę do kolby
+Masz nagrzeć ropę do 
+temperatury 250 °C aby
+przeprowadzić proces 
+destylacji ropy.                        
+Naciskaj na przycisk "Mocniej"
+aby zwiększyć moc ognia.
+Uważaj że po przekroczeniu 
+środka linii zmniejsza się
+stan palnika. Jeżeli stan
+będzie 0% to palnik się
+połamie i trzeba będzie
+zacinać od nowa.                         
                         </x:String>
                     </Label.Text>
                 </Label>

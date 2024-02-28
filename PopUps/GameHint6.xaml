@@ -2,7 +2,7 @@
 <mct:Popup xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:mct="clr-namespace:CommunityToolkit.Maui.Views;assembly=CommunityToolkit.Maui"
-             x:Class="KeroMaker.GameHint2"
+             x:Class="KeroMaker.GameHint6"
              Color="Transparent"
              CanBeDismissedByTappingOutsideOfPopup="False">
 
@@ -23,11 +23,14 @@
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Label FontSize="25" Text="Poradnik" TextColor="#583700" HorizontalOptions="Center" Margin="10"></Label>
-            <ScrollView Grid.Row="1" HeightRequest="50">
+            <ScrollView Grid.Row="1" HeightRequest="75">
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Wlej ropę do kolby
+Gratulacje,Zrobiłeś ropę!
+Teraz ją wlej do lampy
+naftowej.                      
+                                              
                         </x:String>
                     </Label.Text>
                 </Label>
