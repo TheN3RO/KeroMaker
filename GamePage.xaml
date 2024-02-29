@@ -2,16 +2,15 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="KeroMaker.GamePage"
+             BackgroundImageSource="background.png" 
              Title="GamePage">
-    
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="86"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <Image Source="background.png" Grid.RowSpan="3" Aspect="Center"/>
 
         <StackLayout Orientation="Horizontal" BackgroundColor="Transparent">
             <ImageButton Source="cog.svg"
@@ -58,9 +57,9 @@
                 Clicked="ImageDestylator3_Clicked"/>
                 <ImageButton x:Name="imageLamp"
                 Source="lamp.svg"
-                WidthRequest="100"
-                HeightRequest="170"
-                AbsoluteLayout.LayoutBounds="0, 0, 360, 50"
+                WidthRequest="120"
+                HeightRequest="200"
+                AbsoluteLayout.LayoutBounds="0, 0, 360, 760"
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="ImageLamp_Clicked"/>
             </AbsoluteLayout>
