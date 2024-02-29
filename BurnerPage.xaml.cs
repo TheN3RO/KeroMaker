@@ -2,6 +2,7 @@
 using CommunityToolkit.Maui.Views;
 using System.Reflection.Metadata.Ecma335;
 using KeroMaker.PopUps;
+using static Microsoft.Maui.ApplicationModel.Permissions;
 namespace KeroMaker;
 
 public partial class BurnerPage : ContentPage
@@ -10,17 +11,19 @@ public partial class BurnerPage : ContentPage
 
     private bool isIncreasingPower = false;
     private bool isPlaying = false;
-    private bool isWon = false;
+    private bool isWon;
+    private bool isFlameFast;
     private double condition;
     private double temperature;
 
     MainPage mainPage;
     GamePage gamePage;
     double soundVolume=1;
+    int flameSpeed;
     public BurnerPage(MainPage mainPage, GamePage gamePage)
-    {
-       
+    { 
         InitializeComponent(); 
+        isWon = false;
         this.mainPage = mainPage;
         this.gamePage = gamePage;
         // Inicjowanie licznika czasu gry
@@ -31,7 +34,9 @@ public partial class BurnerPage : ContentPage
         increaseButton.Text = "Start";
         temperature = 20;
         condition = 100;
-
+        flameSpeed = 100;
+        isFlameFast = false;
+        FlameAnimation();
         GenerateHint4();
     }
     public double VolumeSound
@@ -47,6 +52,67 @@ public partial class BurnerPage : ContentPage
         flameOnSound.Play();
         isPlaying = true;
         increaseButton.Text = "Mocniej!";
+    }
+    private void FlameAnimation()
+    {
+        string source;
+        int index = 0;
+        int j = 0;
+        Device.StartTimer(TimeSpan.FromMilliseconds(50), () =>
+        {
+            if (isFlameFast)
+            {
+                if (index < 10)
+                {
+                    source = "tile00" + Convert.ToString(index) + ".png";
+                }
+                else
+                {
+                    source = "tile0" + Convert.ToString(index) + ".png";
+                }
+                if (index < 11)
+                {
+                    index++;
+                }
+                else
+                {
+                    index = 0;
+                }
+                contentPage.BackgroundImageSource = source;
+                return true;
+            }
+            
+            else
+            {
+                if (j == 0)
+                {
+                    j = 1;
+                    return true;
+                }
+                else
+                {
+                    if (index < 10)
+                    {
+                        source = "tile00" + Convert.ToString(index) + ".png";
+                    }
+                    else
+                    {
+                        source = "tile0" + Convert.ToString(index) + ".png";
+                    }
+                    if (index < 11)
+                    {
+                        index++;
+                    }
+                    else
+                    {
+                        index = 0;
+                    }
+                    contentPage.BackgroundImageSource = source;
+                    j = 0;
+                    return true;
+                }
+            }
+        });
     }
     async Task PutTaskDelay()
     {
@@ -234,6 +300,7 @@ public partial class BurnerPage : ContentPage
         
         if (isPlaying)
         {
+            isFlameFast = true;
             flameBurnSound.Volume = soundVolume*0.1;
             flameBurnSound.Play();
             // Start moving the bar line right
@@ -256,6 +323,7 @@ public partial class BurnerPage : ContentPage
     }
     private void OnIncreasePowerButtonReleased(object sender, EventArgs e)
     {
+        isFlameFast = false;
         flameBurnSound.Stop();
         isIncreasingPower = false;
         BarLineResistance();

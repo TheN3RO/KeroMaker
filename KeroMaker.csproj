@@ -41,6 +41,17 @@
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile001.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile002.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile003.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile004.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile005.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile006.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile007.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile008.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile009.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile010.png" />
+		<MauiImage Include="Resources\Images\Burner\burner_background\tile011.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part_hint.png" />
@@ -72,6 +83,18 @@
 	  <None Remove="Resources\Images\background_start.png" />
 	  <None Remove="Resources\Images\Burner\bar_line.png" />
 	  <None Remove="Resources\Images\Burner\burner_background.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile000.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile001.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile002.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile003.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile004.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile005.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile006.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile007.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile008.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile009.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile010.png" />
+	  <None Remove="Resources\Images\Burner\burner_background\tile011.png" />
 	  <None Remove="Resources\Images\Burner\horizontal_bar2.png" />
 	  <None Remove="Resources\Images\cog.svg" />
 	  <None Remove="Resources\Images\info_circle.svg" />
@@ -233,6 +256,10 @@
 
 	<ItemGroup>
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part.svg" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiImage Include="Resources\Images\Burner\burner_background\tile000.png" />
 	</ItemGroup>
 	
 	<ItemGroup>
