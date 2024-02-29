@@ -22,6 +22,7 @@
                 <RowDefinition Height="60"/>
             </Grid.RowDefinitions>
             <Label x:Name="headerLabel" FontSize="44" HorizontalOptions="Center" Text="Sukces"  FontFamily="logo_start.ttf"></Label>
+
             <Label x:Name="paragrafLabel" Grid.Row="1"  HorizontalOptions="Center" FontSize="30">
                 <Label.Text>
                     <x:String>
