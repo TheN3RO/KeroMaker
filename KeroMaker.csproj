@@ -52,6 +52,8 @@
 		<MauiImage Include="Resources\Images\Burner\burner_background\tile009.png" />
 		<MauiImage Include="Resources\Images\Burner\burner_background\tile010.png" />
 		<MauiImage Include="Resources\Images\Burner\burner_background\tile011.png" />
+		<MauiImage Include="Resources\Images\Ingredients\mixture_bottle.png" />
+		<MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part_hint.png" />
@@ -101,8 +103,8 @@
 	  <None Remove="Resources\Images\Ingredients\big_bottle_not_refined.png" />
 	  <None Remove="Resources\Images\Ingredients\big_bottle_refined.png" />
 	  <None Remove="Resources\Images\Ingredients\gas.svg" />
-	  <None Remove="Resources\Images\Ingredients\mixture_bottle.svg" />
-	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.svg" />
+	  <None Remove="Resources\Images\Ingredients\mixture_bottle.png" />
+	  <None Remove="Resources\Images\Ingredients\mixture_in_bottle.png" />
 	  <None Remove="Resources\Images\Ingredients\oil_container.svg" />
 	  <None Remove="Resources\Images\Ingredients\potion.svg" />
 	  <None Remove="Resources\Images\ingredients_bg.png" />
@@ -230,8 +232,6 @@
 	  <MauiImage Include="Resources\Images\Ingredients\big_bottle_not_refined.png" />
 	  <MauiImage Include="Resources\Images\Ingredients\big_bottle_refined.png" />
 	  <MauiImage Include="Resources\Images\Ingredients\gas.svg" />
-	  <MauiImage Include="Resources\Images\Ingredients\mixture_bottle.svg" />
-	  <MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\oil_container.svg" />
 	  <MauiImage Include="Resources\Images\Ingredients\potion.svg" />
 	  <MauiImage Include="Resources\Images\Settings\cog.svg" />

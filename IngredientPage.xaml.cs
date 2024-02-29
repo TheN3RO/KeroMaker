@@ -45,7 +45,7 @@ public partial class IngredientPage : ContentPage
         mixtureImage.HeightRequest = 470;
         if (gamePage.GamePhase == 0)
         {
-            playerMixture.Image.Source = "mixture_bottle.svg";
+            playerMixture.Image.Source = "mixture_bottle.png";
             AbsoluteLayout.SetLayoutBounds(mixtureImage, new Rect(0.5, 1, AbsoluteLayout.AutoSize, AbsoluteLayout.AutoSize));
         }
         else if (gamePage.GamePhase == 2)
@@ -181,7 +181,7 @@ public partial class IngredientPage : ContentPage
             if (gamePage.GamePhase == 0 && ingredient.Name == "Ropa") 
             {
                 playerMixture.addIngredient(ingredient);
-                playerMixture.Image.Source = "mixture_in_bottle.svg";
+                playerMixture.Image.Source = "mixture_in_bottle.png";
                 await PutTaskDelay();
                 Win();
             } else if (gamePage.GamePhase == 2 && ingredient.Name == "H2SO4")
