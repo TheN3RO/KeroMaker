@@ -23,11 +23,13 @@
                 <RowDefinition Height="70"/>
             </Grid.RowDefinitions>
             <Label FontSize="25" Text="Poradnik" TextColor="#583700" HorizontalOptions="Center" Margin="10"></Label>
-            <ScrollView Grid.Row="1" HeightRequest="50">
+            <ScrollView Grid.Row="1" HeightRequest="100">
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Teraz nagrzej ropę używając palnika
+Podgrzej ropę używając 
+destylacyjnego palnika
+gazowego.
                         </x:String>
                     </Label.Text>
                 </Label>

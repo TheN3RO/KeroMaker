@@ -27,7 +27,7 @@
                 <Label FontSize="18" TextColor="#583700">
                     <Label.Text>
                         <x:String>
-Wlej ropę do kolby
+Wlej ropę do kolby.
                         </x:String>
                     </Label.Text>
                 </Label>

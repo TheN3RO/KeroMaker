@@ -19,11 +19,11 @@
                 <Button Text="Wróć do gry"
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonReturn_Clicked" 
-                    Margin="10" />
+                    Margin="10"/>
                 <Button Text="Wróć do menu"
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonMenu_Clicked" 
-                    Margin="10" />
+                    Margin="10"/>
             </StackLayout>
         </FlexLayout>
     </Border>
