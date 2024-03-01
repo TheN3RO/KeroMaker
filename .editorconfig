@@ -1,0 +1,4 @@
+﻿[*.cs]
+
+# CA1711: Identyfikatory nie powinny mieć niepoprawnego sufiksu
+dotnet_diagnostic.CA1711.severity = none

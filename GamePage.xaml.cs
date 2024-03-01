@@ -90,7 +90,7 @@ public partial class GamePage : ContentPage
         // Tworzenie obiektów pocz¹tkowych
         var destylator1 = new Image
         {
-            Source = "destylator_1_part.svg",
+            Source = "destylator_1_part.png",
             Aspect = Aspect.AspectFit
         };
         destylator1.GestureRecognizers.Add(new TapGestureRecognizer
@@ -104,7 +104,7 @@ public partial class GamePage : ContentPage
         
         playerMixture.addIngredient(ingredients[0]);
         playerMixture.addIngredient(ingredients[1]);
-        imageDestylator3Part.Source = "destylator_3_part.svg";
+        imageDestylator3Part.Source = "destylator_3_part.png";
         isHintsEnabled = true;
         GenerateHint1();
         GamePhase = 0;
@@ -127,7 +127,7 @@ public partial class GamePage : ContentPage
     {
         if(phase == 0)
         {
-            imageBurner.Source = "destylator_1_part.svg";
+            imageBurner.Source = "destylator_1_part.png";
         }
         else if (phase == 1)
         {
@@ -137,7 +137,7 @@ public partial class GamePage : ContentPage
             }
             else
             {
-                imageBurner.Source = "destylator_1_part.svg";
+                imageBurner.Source = "destylator_1_part.png";
             }
         }
     }
@@ -146,7 +146,7 @@ public partial class GamePage : ContentPage
         if(phase == 0)
         {
             currentOilBottlePhase = 0;
-            imageDestylator2Part.Source = "destylator_2_part.svg";
+            imageDestylator2Part.Source = "destylator_2_part.png";
         }
         else if(phase == 1) 
         {
@@ -164,7 +164,7 @@ public partial class GamePage : ContentPage
         if (phase == 0)
         {
             currentKeroseneBottlePhase = 0;
-            imageDestylator3Part.Source = "destylator_3_part.svg";
+            imageDestylator3Part.Source = "destylator_3_part.png";
         }
         else if (phase == 1)
         {
@@ -193,7 +193,7 @@ public partial class GamePage : ContentPage
     {
         if (phase == 0)
         {
-            imageLamp.Source = "lamp.svg";
+            imageLamp.Source = "lamp.png";
         }
         else if (phase == 1)
         {
@@ -203,7 +203,7 @@ public partial class GamePage : ContentPage
             }
             else
             {
-                imageLamp.Source = "lamp.svg";
+                imageLamp.Source = "lamp.png";
             }
         }
     }

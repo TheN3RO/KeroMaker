@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFrameworks>net8.0-android;net8.0-ios;net8.0-maccatalyst</TargetFrameworks>
+		<TargetFrameworks>net8.0-android34.0</TargetFrameworks>
 		<TargetFrameworks Condition="$([MSBuild]::IsOSPlatform('windows'))">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
 		<!-- Uncomment to also build the tizen app. You will need to install tizen by following this: https://github.com/Samsung/Tizen.NET -->
 		<!-- <TargetFrameworks>$(TargetFrameworks);net8.0-tizen</TargetFrameworks> -->
@@ -38,6 +38,15 @@
 		<SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
 	</PropertyGroup>
 
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net8.0-android34.0|AnyCPU'">
+	  <Debugger>Xamarin</Debugger>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net8.0-android34.0|AnyCPU'">
+	  <Debugger>Xamarin</Debugger>
+	  <AndroidPackageFormat>apk</AndroidPackageFormat>
+	</PropertyGroup>
+
 	<ItemGroup>
 		<!-- App Icon -->
 		<MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#000" />
@@ -54,9 +63,12 @@
 		<MauiImage Include="Resources\Images\Burner\burner_background\tile011.png" />
 		<MauiImage Include="Resources\Images\Ingredients\mixture_bottle.png" />
 		<MauiImage Include="Resources\Images\Ingredients\mixture_in_bottle.png" />
+		<MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
+		<MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
 		<MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part_hint.png" />
+		<MauiImage Include="Resources\Images\Tools\lamp\lamp.png" />
 		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled1.png" />
 		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled2.png" />
 		<MauiImage Include="Resources\Images\Tools\lamp\lamp_filled3.png" />
@@ -115,6 +127,7 @@
 	  <None Remove="Resources\Images\Settings\pause.svg" />
 	  <None Remove="Resources\Images\Settings\sound.png" />
 	  <None Remove="Resources\Images\Settings\volume.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_filled.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator2\destylator_2_part_hint.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_1.png" />
@@ -123,6 +136,7 @@
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_4.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_5.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_6.png" />
+	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_filled.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_hint.png" />
 	  <None Remove="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
@@ -131,6 +145,7 @@
 	  <None Remove="Resources\Images\Tools\destylator_2_part.svg" />
 	  <None Remove="Resources\Images\Tools\destylator_3_part.svg" />
 	  <None Remove="Resources\Images\Tools\lamp.svg" />
+	  <None Remove="Resources\Images\Tools\lamp\lamp.png" />
 	  <None Remove="Resources\Images\Tools\lamp\lamp_filled1.png" />
 	  <None Remove="Resources\Images\Tools\lamp\lamp_filled2.png" />
 	  <None Remove="Resources\Images\Tools\lamp\lamp_filled3.png" />
@@ -250,12 +265,6 @@
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_filled\destylator_3_part_filled_6.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part_refined.png" />
 	  <MauiImage Include="Resources\Images\Tools\destylator\palnik\destylator_1_part.svg" />
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator3\destylator_3_part.svg" />
-	  <MauiImage Include="Resources\Images\Tools\lamp\lamp.svg" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <MauiImage Include="Resources\Images\Tools\destylator\destylator2\destylator_2_part.svg" />
 	</ItemGroup>
 
 	<ItemGroup>

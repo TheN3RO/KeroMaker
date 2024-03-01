@@ -40,11 +40,11 @@
             </Grid.ColumnDefinitions>
             <StackLayout Grid.Column="0">
                 <ImageButton x:Name="imageDestylator2Part"
-                 Source="destylator_2_part.svg" 
+                 Source="destylator_2_part.png" 
                  HeightRequest="196.6" 
                  Clicked="ImageDestylator2_Clicked"/>
                 <ImageButton x:Name="imageBurner"
-                 Source="destylator_1_part.svg"
+                 Source="destylator_1_part.png"
                  HeightRequest="116.6"
                  Clicked="ImageBurner_Clicked"/>
             </StackLayout>
@@ -56,7 +56,7 @@
                 AbsoluteLayout.LayoutFlags="PositionProportional"
                 Clicked="ImageDestylator3_Clicked"/>
                 <ImageButton x:Name="imageLamp"
-                Source="lamp.svg"
+                Source="lamp.png"
                 WidthRequest="120"
                 HeightRequest="200"
                 AbsoluteLayout.LayoutBounds="0, 0, 360, 760"
