@@ -17,7 +17,7 @@ public partial class GameHint2 : Popup
 		}
         else
         {
-            Close("onHints");
+			Close("onHints");
         }
 	}
 }

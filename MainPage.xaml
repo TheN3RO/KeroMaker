@@ -27,17 +27,17 @@
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonPlay_Clicked" 
                     Margin="10"
-                    WidthRequest="140"/>
+                    WidthRequest="170"/>
                 <Button Text="Ustawienia" 
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonSettings_Clicked"
                     Margin="10"
-                    WidthRequest="140"/>
+                    WidthRequest="170"/>
                 <Button Text="Poradnik"
                     HorizontalOptions="FillAndExpand"
                     Clicked="ButtonTutorial_Clicked"
                     Margin="10"
-                    WidthRequest="140"/>
+                    WidthRequest="170"/>
             </StackLayout>
         </FlexLayout>
     </Grid>

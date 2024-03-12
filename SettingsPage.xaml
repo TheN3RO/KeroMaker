@@ -9,7 +9,7 @@
             <RowDefinition Height="75"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="60"/>
-            <RowDefinition Height="60"/>
+            <RowDefinition Height="0"/>
             <RowDefinition Height="60"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
@@ -61,25 +61,6 @@
                     Minimum="0"
                     Maximum="100"
                     Value="{Binding Music, Mode=TwoWay}" 
-                    />
-
-                <Label/>
-            </StackLayout>
-        </Grid>
-        <Grid Grid.Row="3" Padding="10" BackgroundColor= "{StaticResource BlackNight}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="Auto"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-            <Image Source="sound.png" WidthRequest="35" HeightRequest="35" Margin="5,10,20,0" Grid.Column="0"/>
-
-            <StackLayout Grid.Column="1">
-                <Label Text="{Binding Sound, StringFormat='Głośność dźwięków: {0:F0}%'}" FontSize="Medium" />
-                <Slider x:Name="soundSlider"
-                    Minimum="0"
-                    Maximum="100"
-                    Value="{Binding Sound, Mode=TwoWay}" 
                     />
 
                 <Label/>
